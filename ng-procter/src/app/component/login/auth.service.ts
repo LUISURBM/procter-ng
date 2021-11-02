@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+import { environment } from "src/environments/environment";
 export interface UserState {
   username: string;
 }
@@ -19,7 +20,7 @@ export class AuthService {
 
   login(username: string) {
 
-    this.http.post('http://localhost:8000/api/usuarios', { userid: username })
+    this.http.post(environment.procter_api+'/usuarios', { userid: username })
       .pipe(
         take(1)
       )

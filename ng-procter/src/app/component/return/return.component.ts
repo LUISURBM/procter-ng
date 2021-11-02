@@ -8,6 +8,7 @@ import { BundleService } from 'src/app/bundle.service';
 import { formatDate } from '@angular/common';
 import { keymessage } from 'src/app/shared/validation-msg';
 import { ProcterValidator } from '../reject/procter-validator';
+import { environment } from "src/environments/environment";
 
 @Component({
 	selector: 'app-return-basic',
@@ -34,7 +35,7 @@ export class DevolucionComponent implements OnInit {
 			pickupdate: new FormControl(formatDate(this.maxDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 			commentario: new FormControl(null),
 		});
-		http.get('http://localhost:8000/api/planning')
+		http.get(environment.procter_api+'/planning')
 			.pipe(
 				take(1)
 			)
@@ -80,7 +81,7 @@ export class DevolucionComponent implements OnInit {
 
 	save() {
 		if (!this.group.valid) return;
-		this.http.post('http://localhost:8000/api/return/', { ...this.group.value, ...this.returned.value, loadorderid: undefined }).subscribe({
+		this.http.post(environment.procter_api+'/return/', { ...this.group.value, ...this.returned.value, loadorderid: undefined }).subscribe({
 			next: (resp: any) => {
 				if (resp.success)
 					this.toastService.show('Guardado OK!', { classname: 'bg-danger text-light', delay: 15000 });

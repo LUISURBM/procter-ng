@@ -32,11 +32,13 @@
 				</div>
 			</div>
 		</div>
-		<ng-container *ngIf="accessories && accessories.length > 0">
+		<ng-container >
 			<h5 class="sub-title">Información de la consulta:</h5>
-			<!--app-wbr-pivot #pivot1 [toolbar]="true" [width]="'100%'" [height]="500" [report]="report">
+			
+			<wbr-pivot   #report id="wdr-component" [toolbar]="true" [width]="'100%'"  [height]="500"
+				[report]="report">
 				Pivot data
-			</app-wbr-pivot-->
+			</wbr-pivot>
 		</ng-container>
 	</div>
 </div>

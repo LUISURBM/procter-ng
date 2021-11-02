@@ -1,14 +1,15 @@
 import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { BundleService } from 'src/app/bundle.service';
+import { WebDataRocksPivot } from '../reject/pivot/webdatarocks';
+import { ProcterValidator } from '../reject/procter-validator';
 import { ToastService } from '../toast/toast.service';
 import { accessoriesCfg } from './accessories';
-import { ProcterValidator } from '../reject/procter-validator';
-
+import { environment } from "src/environments/environment";
 @Component({
 	selector: 'app-accessories-basic',
 	templateUrl: 'accessories.component.html',
@@ -21,6 +22,8 @@ export class AccessoriesComponent implements OnInit {
 	maxDate: Date = new Date();
 	group: FormGroup;
 	report: any;
+	@ViewChild('report', { static: false })
+	pivot: WebDataRocksPivot;
 	constructor(private builder: FormBuilder, private http: HttpClient, public toastService: ToastService, public bundleSrv: BundleService,
 
 		private router: Router) {
@@ -37,7 +40,7 @@ export class AccessoriesComponent implements OnInit {
 		if (this.group.valid)
 			this.group.valueChanges.subscribe({
 				next: (v) =>
-					this.http.get('http://localhost:8000/api/report/accessories/'+ this.group.value.fechainicio+"/"+this.group.value.fechafin)
+					this.http.get(environment.procter_api+'/report/accessories/' + this.group.value.fechainicio + "/" + this.group.value.fechafin)
 						.pipe(take(1))
 						.subscribe({
 							next: (resp: any[]) => {
