@@ -20,7 +20,7 @@ export class AuthService {
 
   login(username: string) {
 
-    this.http.post(environment.procter_api+'/usuarios', { userid: username })
+    this.http.post(environment.procter_api+'api/usuarios', { userid: username })
       .pipe(
         take(1)
       )

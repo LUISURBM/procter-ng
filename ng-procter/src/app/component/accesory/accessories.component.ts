@@ -40,7 +40,7 @@ export class AccessoriesComponent implements OnInit {
 		if (this.group.valid)
 			this.group.valueChanges.subscribe({
 				next: (v) =>
-					this.http.get(environment.procter_api+'/report/accessories/' + this.group.value.fechainicio + "/" + this.group.value.fechafin)
+					this.http.get(environment.procter_api+'api/report/accessories/' + this.group.value.fechainicio + "/" + this.group.value.fechafin)
 						.pipe(take(1))
 						.subscribe({
 							next: (resp: any[]) => {
