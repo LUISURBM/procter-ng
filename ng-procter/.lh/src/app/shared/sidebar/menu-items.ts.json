@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/shared/sidebar/menu-items.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635860713432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635860713432,
+            "name": "Commit-0",
+            "content": "import { RouteInfo } from './sidebar.metadata';\r\n\r\nexport const ROUTES: RouteInfo[] = [\r\n  {\r\n    path: '/component/planning',\r\n    title: 'Planeación',\r\n    icon: 'mdi mdi-clipboard-text',\r\n    class: '',\r\n    extralink: false,\r\n    submenu: []\r\n  }, {\r\n    path: '/component/rejects',\r\n    title: 'Rechazo',\r\n    icon: 'mdi mdi-grid-off',\r\n    class: '',\r\n    extralink: false,\r\n    submenu: []\r\n  }, {\r\n    path: '/component/returns',\r\n    title: 'Devolución',\r\n    icon: 'mdi mdi-file-restore',\r\n    class: '',\r\n    extralink: false,\r\n    submenu: []\r\n  }, {\r\n    path: '/component/accessories',\r\n    title: 'Accesorio',\r\n    icon: 'mdi mdi-widgets',\r\n    class: '',\r\n    extralink: false,\r\n    submenu: []\r\n  }\r\n];\r\n"
+        }
+    ]
+}

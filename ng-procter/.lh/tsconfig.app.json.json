@@ -1,0 +1,30 @@
+{
+    "sourceFile": "tsconfig.app.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1635813677356,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635815066261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n {\n   \"extends\": \"./tsconfig.json\",\n   \"compilerOptions\": {\n     \"outDir\": \"./out-tsc/app\",\n-    \"allowJs\": true,\n     \"types\": []\n   },\n   \"include\": [\n     \"src/**/*.ts\"\n"
+                },
+                {
+                    "date": 1635815449946,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,11 @@\n {\n   \"extends\": \"./tsconfig.json\",\n   \"compilerOptions\": {\n     \"outDir\": \"./out-tsc/app\",\n+    \"allowJs\": true,\n+    \"allowSyntheticDefaultImports\": true,\n+    \"checkJs\": false,\n     \"types\": []\n   },\n   \"include\": [\n     \"src/**/*.ts\"\n"
+                },
+                {
+                    "date": 1635822633342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,8 @@\n   \"extends\": \"./tsconfig.json\",\n   \"compilerOptions\": {\n     \"outDir\": \"./out-tsc/app\",\n     \"allowJs\": true,\n-    \"allowSyntheticDefaultImports\": true,\n     \"checkJs\": false,\n     \"types\": []\n   },\n   \"include\": [\n"
+                }
+            ],
+            "date": 1635813677356,
+            "name": "Commit-0",
+            "content": "{\n  \"extends\": \"./tsconfig.json\",\n  \"compilerOptions\": {\n    \"outDir\": \"./out-tsc/app\",\n    \"allowJs\": true,\n    \"types\": []\n  },\n  \"include\": [\n    \"src/**/*.ts\"\n  ],\n  \"exclude\": [\n    \"src/test.ts\",\n    \"src/**/*.spec.ts\"\n  ]\n}\n"
+        }
+    ]
+}

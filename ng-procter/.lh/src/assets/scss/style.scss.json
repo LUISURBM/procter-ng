@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/assets/scss/style.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635771185269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635771185269,
+            "name": "Commit-0",
+            "content": "/*\r\nTemplate Name: Admin Template\r\nAuthor: Niravjoshi / Wrappixel\r\nFile: scss\r\n*/\r\n\r\n//(fonts)\r\n@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900');\r\n\r\n//(Required file)\r\n@import 'variable';\r\n\r\n// Import Bootstrap source files (Required file)\r\n@import \"bootstrap/bootstrap\";\r\n\r\n//This is for the components (Required file)\r\n@import 'components';\r\n\r\n//This is for the responsive (Required file)\r\n@import 'responsive';\r\n\r\n//In This scss you can write your scss\r\n@import 'custom'; \r\n\r\n//This is for the icons (Required file)\r\n@import 'icons/font-awesome/css/fontawesome-all.css';\r\n@import 'icons/themify-icons/themify-icons.css';\r\n@import \"icons/material-design-iconic-font/css/materialdesignicons.min.css\";\r\n\r\n"
+        }
+    ]
+}

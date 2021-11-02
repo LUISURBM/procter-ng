@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/dashboard/dashboard.module.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1635767716645,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635768362024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,7 @@\n import { NgModule } from '@angular/core';\r\n import { RouterModule, Routes } from '@angular/router';\r\n import { SharedModule } from '../shared/shared.module';\r\n-import { CardsComponent } from './dashboard-componets/cards/cards.component';\r\n-import { DailySalesComponent } from './dashboard-componets/daily-sales/daily-sales.component';\r\n-import { ProjectMonthComponent } from './dashboard-componets/project-month/project-month.component';\r\n-import { RevenueStaticGraphComponent } from './dashboard-componets/revenue-static-graph/revenue-static-graph.component';\r\n-import { WeeklySalesComponent } from './dashboard-componets/weekly-sales/weekly-sales.component';\r\n import { DashboardComponent } from './dashboard.component';\r\n \r\n const routes: Routes = [\r\n \t{\r\n@@ -23,7 +18,7 @@\n ];\r\n \r\n @NgModule({\r\n \timports: [SharedModule, RouterModule.forChild(routes)],\r\n-\tdeclarations: [DashboardComponent, DailySalesComponent, WeeklySalesComponent, RevenueStaticGraphComponent, ProjectMonthComponent, CardsComponent]\r\n+\tdeclarations: [DashboardComponent]\r\n })\r\n export class DashboardModule { }\r\n"
+                }
+            ],
+            "date": 1635767716645,
+            "name": "Commit-0",
+            "content": "import { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { SharedModule } from '../shared/shared.module';\r\nimport { CardsComponent } from './dashboard-componets/cards/cards.component';\r\nimport { DailySalesComponent } from './dashboard-componets/daily-sales/daily-sales.component';\r\nimport { ProjectMonthComponent } from './dashboard-componets/project-month/project-month.component';\r\nimport { RevenueStaticGraphComponent } from './dashboard-componets/revenue-static-graph/revenue-static-graph.component';\r\nimport { WeeklySalesComponent } from './dashboard-componets/weekly-sales/weekly-sales.component';\r\nimport { DashboardComponent } from './dashboard.component';\r\n\r\nconst routes: Routes = [\r\n\t{\r\n\t\tpath: '',\r\n\t\tdata: {\r\n\t\t\ttitle: 'Dashboard',\r\n\t\t\turls: [\r\n\t\t\t\t{ title: 'Dashboard', url: '/dashboard' },\r\n\t\t\t\t{ title: 'Dashboard' }\r\n\t\t\t]\r\n\t\t},\r\n\t\tcomponent: DashboardComponent\r\n\t}\r\n];\r\n\r\n@NgModule({\r\n\timports: [SharedModule, RouterModule.forChild(routes)],\r\n\tdeclarations: [DashboardComponent, DailySalesComponent, WeeklySalesComponent, RevenueStaticGraphComponent, ProjectMonthComponent, CardsComponent]\r\n})\r\nexport class DashboardModule { }\r\n"
+        }
+    ]
+}

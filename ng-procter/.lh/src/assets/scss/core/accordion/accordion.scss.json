@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/assets/scss/core/accordion/accordion.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635852844429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635852844429,
+            "name": "Commit-0",
+            "content": "$midnight: #2c3e50;\r\n$clouds: #ecf0f1;\r\n\r\n.tab {\r\n    width: 100%;\r\n    overflow: hidden;\r\n    &-label {\r\n      display: flex;\r\n      justify-content: space-between;\r\n      font-weight: bold;\r\n      cursor: pointer;\r\n      button:last-child {\r\n        transition: all .35s;\r\n      }\r\n    }\r\n    &-content {\r\n      max-height: 0;\r\n      padding: 0 1em;\r\n      color: $midnight;\r\n      background: white;\r\n      transition: all .35s;\r\n    }\r\n    &-content-visible {\r\n        padding: 1em;\r\n        transition: all .35s;\r\n    }\r\n  }\r\n  "
+        }
+    ]
+}

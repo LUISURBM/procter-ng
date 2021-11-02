@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/app/component/planning/planning.component.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1635771982234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635777137419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n }\r\n \r\n .tab {\r\n     width: 100%;\r\n-    color: white;\r\n     overflow: hidden;\r\n     &-label {\r\n       display: flex;\r\n       justify-content: space-between;\r\n"
+                },
+                {
+                    "date": 1635789373033,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,8 @@\n         transition: all .35s;\r\n       }\r\n     }\r\n     &-content {\r\n-      max-height: 0;\r\n       padding: 0 1em;\r\n       color: $midnight;\r\n       background: white;\r\n       transition: all .35s;\r\n"
+                },
+                {
+                    "date": 1635789993727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,8 @@\n     &-label {\r\n       display: flex;\r\n       justify-content: space-between;\r\n       padding: 1em;\r\n-      background: $midnight;\r\n       font-weight: bold;\r\n       cursor: pointer;\r\n       /* Icon */\r\n       &:hover {\r\n@@ -29,13 +28,18 @@\n         transition: all .35s;\r\n       }\r\n     }\r\n     &-content {\r\n+      max-height: 0;\r\n       padding: 0 1em;\r\n       color: $midnight;\r\n       background: white;\r\n       transition: all .35s;\r\n     }\r\n+    &-content-visible {\r\n+        max-height: 100vh;\r\n+        padding: 1em;\r\n+    }\r\n     &-close {\r\n       display: flex;\r\n       justify-content: flex-end;\r\n       padding: 1em;\r\n"
+                },
+                {
+                    "date": 1635790447423,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,15 +12,10 @@\n     overflow: hidden;\r\n     &-label {\r\n       display: flex;\r\n       justify-content: space-between;\r\n-      padding: 1em;\r\n       font-weight: bold;\r\n       cursor: pointer;\r\n-      /* Icon */\r\n-      &:hover {\r\n-        background: darken($midnight, 10%);\r\n-      }\r\n       &::after {\r\n         content: \"\\276F\";\r\n         width: 1em;\r\n         height: 1em;\r\n"
+                },
+                {
+                    "date": 1635791544379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,9 @@\n         height: 1em;\r\n         text-align: center;\r\n         transition: all .35s;\r\n       }\r\n+      \r\n     }\r\n     &-content {\r\n       max-height: 0;\r\n       padding: 0 1em;\r\n"
+                },
+                {
+                    "date": 1635791805346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,16 +14,11 @@\n       display: flex;\r\n       justify-content: space-between;\r\n       font-weight: bold;\r\n       cursor: pointer;\r\n-      &::after {\r\n-        content: \"\\276F\";\r\n-        width: 1em;\r\n-        height: 1em;\r\n-        text-align: center;\r\n+      button:last-child {\r\n         transition: all .35s;\r\n       }\r\n-      \r\n     }\r\n     &-content {\r\n       max-height: 0;\r\n       padding: 0 1em;\r\n@@ -33,18 +28,8 @@\n     }\r\n     &-content-visible {\r\n         max-height: 100vh;\r\n         padding: 1em;\r\n+        transition: all .35s;\r\n     }\r\n-    &-close {\r\n-      display: flex;\r\n-      justify-content: flex-end;\r\n-      padding: 1em;\r\n-      font-size: 0.75em;\r\n-      background: $midnight;\r\n-      cursor: pointer;\r\n-      &:hover {\r\n-        background: darken($midnight, 10%);\r\n-      }\r\n-    }\r\n   }\r\n   \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1635793563683,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,8 @@\n       background: white;\r\n       transition: all .35s;\r\n     }\r\n     &-content-visible {\r\n-        max-height: 100vh;\r\n         padding: 1em;\r\n         transition: all .35s;\r\n     }\r\n   }\r\n"
+                },
+                {
+                    "date": 1635793647836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,7 @@\n $midnight: #2c3e50;\r\n $clouds: #ecf0f1;\r\n \r\n-.tabs{\r\n-  border-radius: 8px;\r\n-  overflow: hidden;\r\n-  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);\r\n-}\r\n-\r\n .tab {\r\n     width: 100%;\r\n     overflow: hidden;\r\n     &-label {\r\n"
+                },
+                {
+                    "date": 1635852844439,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,28 +0,0 @@\n-$midnight: #2c3e50;\r\n-$clouds: #ecf0f1;\r\n-\r\n-.tab {\r\n-    width: 100%;\r\n-    overflow: hidden;\r\n-    &-label {\r\n-      display: flex;\r\n-      justify-content: space-between;\r\n-      font-weight: bold;\r\n-      cursor: pointer;\r\n-      button:last-child {\r\n-        transition: all .35s;\r\n-      }\r\n-    }\r\n-    &-content {\r\n-      max-height: 0;\r\n-      padding: 0 1em;\r\n-      color: $midnight;\r\n-      background: white;\r\n-      transition: all .35s;\r\n-    }\r\n-    &-content-visible {\r\n-        padding: 1em;\r\n-        transition: all .35s;\r\n-    }\r\n-  }\r\n-  \n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1635771982234,
+            "name": "Commit-0",
+            "content": "$midnight: #2c3e50;\r\n$clouds: #ecf0f1;\r\n\r\n.tabs{\r\n  border-radius: 8px;\r\n  overflow: hidden;\r\n  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);\r\n}\r\n\r\n.tab {\r\n    width: 100%;\r\n    color: white;\r\n    overflow: hidden;\r\n    &-label {\r\n      display: flex;\r\n      justify-content: space-between;\r\n      padding: 1em;\r\n      background: $midnight;\r\n      font-weight: bold;\r\n      cursor: pointer;\r\n      /* Icon */\r\n      &:hover {\r\n        background: darken($midnight, 10%);\r\n      }\r\n      &::after {\r\n        content: \"\\276F\";\r\n        width: 1em;\r\n        height: 1em;\r\n        text-align: center;\r\n        transition: all .35s;\r\n      }\r\n    }\r\n    &-content {\r\n      max-height: 0;\r\n      padding: 0 1em;\r\n      color: $midnight;\r\n      background: white;\r\n      transition: all .35s;\r\n    }\r\n    &-close {\r\n      display: flex;\r\n      justify-content: flex-end;\r\n      padding: 1em;\r\n      font-size: 0.75em;\r\n      background: $midnight;\r\n      cursor: pointer;\r\n      &:hover {\r\n        background: darken($midnight, 10%);\r\n      }\r\n    }\r\n  }\r\n  "
+        }
+    ]
+}

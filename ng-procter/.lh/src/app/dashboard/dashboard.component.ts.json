@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/dashboard/dashboard.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635767728598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635767728598,
+            "name": "Commit-0",
+            "content": "import { Component, AfterViewInit } from '@angular/core';\r\ndeclare var require: any;\r\n@Component({\r\n  templateUrl: './dashboard.component.html'\r\n})\r\n\r\n\r\n\r\nexport class DashboardComponent implements AfterViewInit {\r\n  subtitle: string;\r\n  constructor() {\r\n    this.subtitle = 'This is some text within a card block.';\r\n  }\r\n\r\n  // lineChart\r\n  public lineChartData: Array<object> = [\r\n    { data: [8,13,1,13,1], label: 'Product A' },\r\n    { data: [14,1,14,1,14], label: 'Product B' }\r\n  ];\r\n  public lineChartLabels: Array<string> = [\r\n    '1',\r\n    '2',\r\n    '3',\r\n    '4',\r\n    '5',\r\n  ];\r\n  public lineChartOptions={\r\n    responsive: true,\r\n    maintainAspectRatio: false\r\n  };\r\n  public lineChartColors= [\r\n    {\r\n      // grey\r\n      backgroundColor: 'rgba(0,158,251,0.1)',\r\n      borderColor: '#009efb',\r\n      pointBackgroundColor: '#009efb',\r\n      pointBorderColor: '#fff',\r\n      pointHoverBackgroundColor: '#fff',\r\n      pointHoverBorderColor: '#009efb'\r\n    },\r\n    {\r\n      // dark grey\r\n      backgroundColor: 'rgba(85,206,99,0.1)',\r\n      borderColor: '#55ce63',\r\n      pointBackgroundColor: '#55ce63',\r\n      pointBorderColor: '#fff',\r\n      pointHoverBackgroundColor: '#fff',\r\n      pointHoverBorderColor: '#55ce63'\r\n    }\r\n  ];\r\n  public lineChartLegend = false;\r\n  public lineChartType = 'line';\r\n\r\n  ngAfterViewInit() {}\r\n}\r\n"
+        }
+    ]
+}

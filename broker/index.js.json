@@ -1,0 +1,46 @@
+{
+	"pid": 29996,
+	"date": "2021-11-02T13:01:42.485Z",
+	"port": 8000,
+	"ip": "127.0.0.1",
+	"stats": [
+		{
+			"id": null,
+			"version": {
+				"node": "v14.17.5",
+				"total": "4",
+				"app": "1.0.0"
+			},
+			"pid": 29996,
+			"thread": "",
+			"mode": "debug",
+			"overload": 0,
+			"date": "2021-11-02T14:01:43.106Z",
+			"memory": 9.06,
+			"rm": 0,
+			"fm": 0,
+			"wm": 0,
+			"em": 0,
+			"mm": 0,
+			"om": 0,
+			"dm": 0,
+			"um": 0,
+			"pm": 0,
+			"sm": 0,
+			"cm": 0,
+			"dbrm": 1,
+			"dbwm": 0,
+			"usage": 0,
+			"requests": 66,
+			"pending": 0,
+			"external": 0,
+			"errors": 1,
+			"timeouts": 0,
+			"online": 0,
+			"uptime": 61,
+			"download": 0.005,
+			"upload": 0.034,
+			"lasterror": "2021-11-02T13:10:12.596Z DBMS - Error: error: no existe la columna «pickupreason» en la relación «returns»: WITH rows AS (UPDATE integraciones.returns SET \"returnid\"=$1,\"reg_status\"=$2,\"pickupdate\"=$3,\"pickupreason\"=$4,\"last_update\"=$5 WHERE returnid=90000002 RETURNING 1) SELECT count(1)::int as dbmsvalue FROM rows\n    at Object.onerror (C:\\Users\\luiz-\\ws\\PROCTER\\broker\\node_modules\\dbms\\index.js:1885:13)\n    at Query.callback (C:\\Users\\luiz-\\ws\\PROCTER\\broker\\node_modules\\dbms\\pg.js:491:45)\n    at Query.handleError (C:\\Users\\luiz-\\ws\\PROCTER\\broker\\node_modules\\pg\\lib\\query.js:128:19)\n    at Client._handleErrorMessage (C:\\Users\\luiz-\\ws\\PROCTER\\broker\\node_modules\\pg\\lib\\client.js:335:17)\n    at Connection.emit (events.js:400:28)\n    at C:\\Users\\luiz-\\ws\\PROCTER\\broker\\node_modules\\pg\\lib\\connection.js:114:12\n    at Parser.parse (C:\\Users\\luiz-\\ws\\PROCTER\\broker\\node_modules\\pg-protocol\\dist\\parser.js:40:17)\n    at Socket.<anonymous> (C:\\Users\\luiz-\\ws\\PROCTER\\broker\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (events.js:400:28)\n    at addChunk (internal/streams/readable.js:290:12)"
+		}
+	]
+}

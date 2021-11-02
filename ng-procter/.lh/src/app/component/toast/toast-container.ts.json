@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/app/component/toast/toast-container.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1635768130655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635859562169,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,18 +7,26 @@\n   selector: 'app-toasts',\r\n   template: `\r\n     <div\r\n       *ngFor=\"let toast of toastService.toasts\"\r\n-      [class]=\"toast.classname\"\r\n+      class=\"toast-container\"\r\n     >\r\n       <ng-template [ngIf]=\"isTemplate(toast)\" [ngIfElse]=\"text\">\r\n         <ng-template [ngTemplateOutlet]=\"toast.textOrTpl\"></ng-template>\r\n       </ng-template>\r\n \r\n       <ng-template #text>{{ toast.textOrTpl }}</ng-template>\r\n     </div>\r\n   `,\r\n-  host: {'[class.ngb-toasts]': 'true'}\r\n+  host: {'[class.ngb-toasts]': 'true'},\r\n+  styles: [`\r\n+    .toast-container{\r\n+      position: fixed;\r\n+      top: 2vh;\r\n+      right: 50%;\r\n+      z-index: 99;\r\n+    }\r\n+  `],\r\n })\r\n export class ToastsContainer {\r\n   constructor(public toastService: ToastService) {}\r\n   \r\n"
+                },
+                {
+                    "date": 1635859632031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,18 +7,18 @@\n   selector: 'app-toasts',\r\n   template: `\r\n     <div\r\n       *ngFor=\"let toast of toastService.toasts\"\r\n-      class=\"toast-container\"\r\n+      [class]=\"toast.classname\"\r\n     >\r\n       <ng-template [ngIf]=\"isTemplate(toast)\" [ngIfElse]=\"text\">\r\n         <ng-template [ngTemplateOutlet]=\"toast.textOrTpl\"></ng-template>\r\n       </ng-template>\r\n \r\n       <ng-template #text>{{ toast.textOrTpl }}</ng-template>\r\n     </div>\r\n   `,\r\n-  host: {'[class.ngb-toasts]': 'true'},\r\n+  host: {'[class.toast-container]': 'true'},\r\n   styles: [`\r\n     .toast-container{\r\n       position: fixed;\r\n       top: 2vh;\r\n"
+                },
+                {
+                    "date": 1635859674701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,17 +16,9 @@\n \r\n       <ng-template #text>{{ toast.textOrTpl }}</ng-template>\r\n     </div>\r\n   `,\r\n-  host: {'[class.toast-container]': 'true'},\r\n-  styles: [`\r\n-    .toast-container{\r\n-      position: fixed;\r\n-      top: 2vh;\r\n-      right: 50%;\r\n-      z-index: 99;\r\n-    }\r\n-  `],\r\n+  host: {'[class.toast-container]': 'true'}\r\n })\r\n export class ToastsContainer {\r\n   constructor(public toastService: ToastService) {}\r\n   \r\n"
+                }
+            ],
+            "date": 1635768130655,
+            "name": "Commit-0",
+            "content": "import { Component, TemplateRef } from '@angular/core';\r\n\r\nimport { ToastService } from './toast.service';\r\n\r\n\r\n@Component({\r\n  selector: 'app-toasts',\r\n  template: `\r\n    <div\r\n      *ngFor=\"let toast of toastService.toasts\"\r\n      [class]=\"toast.classname\"\r\n    >\r\n      <ng-template [ngIf]=\"isTemplate(toast)\" [ngIfElse]=\"text\">\r\n        <ng-template [ngTemplateOutlet]=\"toast.textOrTpl\"></ng-template>\r\n      </ng-template>\r\n\r\n      <ng-template #text>{{ toast.textOrTpl }}</ng-template>\r\n    </div>\r\n  `,\r\n  host: {'[class.ngb-toasts]': 'true'}\r\n})\r\nexport class ToastsContainer {\r\n  constructor(public toastService: ToastService) {}\r\n  \r\n  isTemplate(toast:{title:string}) { \r\n    return toast.title;\r\n   }\r\n}\r\n"
+        }
+    ]
+}

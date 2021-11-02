@@ -1,0 +1,70 @@
+{
+    "sourceFile": "schemas/return.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 13,
+            "patches": [
+                {
+                    "date": 1635850641590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635851017289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,10 +9,10 @@\n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n \t\tvar builder = DBMS().find('integraciones.returns');\n \t\t\n-\t\tbuilder.join('tablagen', 'integraciones.tablagen').on('reg_status', 'table_type')\n-\t\t\t.join('product', 'integraciones.invoice_product').on('returnid', 'returnid')\n+\t\tbuilder\n+\t\t.join('product', 'integraciones.invoice_product').on('returnid', 'returnid')\n \t\t\t.callback($.callback);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n \n"
+                },
+                {
+                    "date": 1635851089531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,13 +7,13 @@\n \tschema.setQuery(function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n-\t\tvar builder = DBMS().find('integraciones.returns');\n-\t\t\n+\t\tvar builder = await DBMS().find('integraciones.returns');\n+\n \t\tbuilder\n-\t\t.join('product', 'integraciones.invoice_product').on('returnid', 'returnid')\n-\t\t\t.callback($.callback);\n+\t\t\t.join('product', 'integraciones.invoice_product').on('returnid', 'returnid').toPromise();\n+\t\t$.callback(builder);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n \n \t});\n"
+                },
+                {
+                    "date": 1635851123735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \tschema.define('reg_status', 'String(20)', true);\n \tschema.define('pickupdate', 'Date', true);\n \tschema.define('commentario', 'String(20)', false);\n \n-\tschema.setQuery(function ($) {\n+\tschema.setQuery(async function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n \t\tvar builder = await DBMS().find('integraciones.returns');\n"
+                },
+                {
+                    "date": 1635851175679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,17 +3,17 @@\n \tschema.define('reg_status', 'String(20)', true);\n \tschema.define('pickupdate', 'Date', true);\n \tschema.define('commentario', 'String(20)', false);\n \n-\tschema.setQuery(async function ($) {\n+\tschema.setQuery(function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n-\t\tvar builder = await DBMS().find('integraciones.returns');\n-\n+\t\tvar builder = DBMS().find('integraciones.returns');\n \t\tbuilder\n-\t\t\t.join('product', 'integraciones.invoice_product').on('returnid', 'returnid').toPromise();\n-\t\t$.callback(builder);\n+\t\t\t.join('tablagen', 'integraciones.tablagen').on('reg_status', 'table_type')\n+\t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid')\n+\t\t\t.callback($.callback);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n \n \t});\n"
+                },
+                {
+                    "date": 1635851266975,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,8 @@\n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n \t\tvar builder = DBMS().find('integraciones.returns');\n \t\tbuilder\n-\t\t\t.join('tablagen', 'integraciones.tablagen').on('reg_status', 'table_type')\n \t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid')\n \t\t\t.callback($.callback);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n"
+                },
+                {
+                    "date": 1635851306806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,16 +3,16 @@\n \tschema.define('reg_status', 'String(20)', true);\n \tschema.define('pickupdate', 'Date', true);\n \tschema.define('commentario', 'String(20)', false);\n \n-\tschema.setQuery(function ($) {\n+\tschema.setQuery(async function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n-\t\tvar builder = DBMS().find('integraciones.returns');\n+\t\tvar builder = await DBMS().find('integraciones.returns');\n \t\tbuilder\n-\t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid')\n-\t\t\t.callback($.callback);\n+\t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid').toPromise()\n+\t\t\t$.callback(builder);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n \n \t});\n"
+                },
+                {
+                    "date": 1635851474103,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \tschema.setQuery(async function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n-\t\tvar builder = await DBMS().find('integraciones.returns');\n+\t\tvar builder = await DBMS().debug().find('integraciones.returns');\n \t\tbuilder\n \t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid').toPromise()\n \t\t\t$.callback(builder);\n \t\t// Or you can use a simple query via:\n"
+                },
+                {
+                    "date": 1635851658075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,10 +8,9 @@\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n \t\tvar builder = await DBMS().debug().find('integraciones.returns');\n-\t\tbuilder\n-\t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid').toPromise()\n+\t\t\tbuilder.toPromise()\n \t\t\t$.callback(builder);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n \n"
+                },
+                {
+                    "date": 1635851700589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,18 +16,8 @@\n \n \t});\n \n \n-\tschema.setInsert(function ($, model) {\n \n-\t\t// Assigns additional values\n-\t\tmodel.last_update = new Date();\n-\t\tmodel.user_update = 'PROCTER';\n-\t\tconsole.log('insert reject')\n-\t\tconsole.log(model)\n-\t\t// Performs query\n-\t\tDBMS().debug().insert('integraciones.returns', model).log($, model).callback($.done(model.returnid));\n \n-\t});\n \n-\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1635851723305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,6 @@\n NEWSCHEMA('Return', function (schema) {\n \n-\tschema.define('reg_status', 'String(20)', true);\n-\tschema.define('pickupdate', 'Date', true);\n-\tschema.define('commentario', 'String(20)', false);\n \n \tschema.setQuery(async function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n"
+                },
+                {
+                    "date": 1635851754419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,34 @@\n NEWSCHEMA('Return', function (schema) {\n \n+\tschema.define('reg_status', 'String(20)', true);\n+\tschema.define('pickupdate', 'Date', true);\n+\tschema.define('commentario', 'String(20)', false);\n \n \tschema.setQuery(async function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n \t\tvar builder = await DBMS().debug().find('integraciones.returns');\n-\t\t\tbuilder.toPromise()\n+\t\t\tbuilder\n+\t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid').promise()\n \t\t\t$.callback(builder);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n \n \t});\n \n \n+\tschema.setInsert(function ($, model) {\n \n+\t\t// Assigns additional values\n+\t\tmodel.last_update = new Date();\n+\t\tmodel.user_update = 'PROCTER';\n+\t\tconsole.log('insert reject')\n+\t\tconsole.log(model)\n+\t\t// Performs query\n+\t\tDBMS().debug().insert('integraciones.returns', model).log($, model).callback($.done(model.returnid));\n \n+\t});\n \n+\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1635851791205,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,9 @@\n \tschema.setQuery(async function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n \t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n-\t\tvar builder = await DBMS().debug().find('integraciones.returns');\n-\t\t\tbuilder\n+\t\tvar builder = await DBMS().debug().find('integraciones.returns')\n \t\t\t.join('product', 'integraciones.returns_products').on('returnid', 'returnid').promise()\n \t\t\t$.callback(builder);\n \t\t// Or you can use a simple query via:\n \t\t// DBMS().find('integraciones.planning').callback($.callback);\n"
+                },
+                {
+                    "date": 1635858102222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n NEWSCHEMA('Return', function (schema) {\n \n-\tschema.define('reg_status', 'String(20)', true);\n+\tschema.define('returnid', Number);\n+\tschema.define('reg_status', 'String(1)', true);\n \tschema.define('pickupdate', 'Date', true);\n-\tschema.define('commentario', 'String(20)', false);\n+\tschema.define('pickupreason', Number, true);\n \n \tschema.setQuery(async function ($) {\n \n \t\t// Performs automatically pagination, sort and all checks\n@@ -28,6 +29,17 @@\n \t\tDBMS().debug().insert('integraciones.returns', model).log($, model).callback($.done(model.returnid));\n \n \t});\n \n+\tschema.setUpdate(function ($, model) {\n \n+\t\t// Assigns additional values\n+\t\tmodel.last_update = new Date();\n+\n+\t\t// Performs query\n+\t\t// 404 error will be returned if the no records won't be updated\n+\t\tconsole.log(model);\n+\t\tDBMS().modify('integraciones.returns', model).where('returnid', model.returnid).log($, model).error(404).callback($.done($.returnid));\n+\n+\t});\n+\n });\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1635850641590,
+            "name": "Commit-0",
+            "content": "NEWSCHEMA('Return', function (schema) {\n\n\tschema.define('reg_status', 'String(20)', true);\n\tschema.define('pickupdate', 'Date', true);\n\tschema.define('commentario', 'String(20)', false);\n\n\tschema.setQuery(function ($) {\n\n\t\t// Performs automatically pagination, sort and all checks\n\t\t// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);\n\t\tvar builder = DBMS().find('integraciones.returns');\n\t\t\n\t\tbuilder.join('tablagen', 'integraciones.tablagen').on('reg_status', 'table_type')\n\t\t\t.join('product', 'integraciones.invoice_product').on('returnid', 'returnid')\n\t\t\t.callback($.callback);\n\t\t// Or you can use a simple query via:\n\t\t// DBMS().find('integraciones.planning').callback($.callback);\n\n\t});\n\n\n\tschema.setInsert(function ($, model) {\n\n\t\t// Assigns additional values\n\t\tmodel.last_update = new Date();\n\t\tmodel.user_update = 'PROCTER';\n\t\tconsole.log('insert reject')\n\t\tconsole.log(model)\n\t\t// Performs query\n\t\tDBMS().debug().insert('integraciones.returns', model).log($, model).callback($.done(model.returnid));\n\n\t});\n\n\n});"
+        }
+    ]
+}

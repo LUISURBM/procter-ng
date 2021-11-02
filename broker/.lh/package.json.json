@@ -1,0 +1,22 @@
+{
+    "sourceFile": "package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1635772136174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635772597851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,16 @@\n {\n-\t\"name\": \"emptyproject-postgresql\",\n-\t\"description\": \"Total.js + PostgreSQL empty project\",\n-\t\"version\": \"1.0.0\",\n-\t\"dependencies\": {\n-\t\t\"dbms\": \"^1.0.4\",\n+  \"name\": \"broker\",\n+  \"version\": \"1.0.0\",\n+  \"description\": \"- [Documentation](https://docs.totaljs.com) - [Join Total.js Telegram](https://t.me/totaljs) - [Support](https://www.totaljs.com/support/)\",\n+  \"main\": \"index.js\",\n+  \"scripts\": {\n+    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n+  },\n+  \"author\": \"\",\n+  \"license\": \"ISC\",\n+  \"dependencies\": {\n+    \"dbms\": \"^1.0.4\",\n \t\t\"pg\": \"^8.7.1\",\n \t\t\"total4\": \"latest\"\n-\t},\n-\t\"scripts\": {\n-\t\t\"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n-\t},\n-\t\"keywords\": [\n-\t\t\"empty\",\n-\t\t\"project\",\n-\t\t\"postgresql\",\n-\t\t\"total4\",\n-\t\t\"dbms\"\n-\t],\n-\t\"author\": \"Peter Širka\",\n-\t\"license\": \"MIT\"\n+  }\n }\n"
+                }
+            ],
+            "date": 1635772136174,
+            "name": "Commit-0",
+            "content": "{\n\t\"name\": \"emptyproject-postgresql\",\n\t\"description\": \"Total.js + PostgreSQL empty project\",\n\t\"version\": \"1.0.0\",\n\t\"dependencies\": {\n\t\t\"dbms\": \"^1.0.4\",\n\t\t\"pg\": \"^8.7.1\",\n\t\t\"total4\": \"latest\"\n\t},\n\t\"scripts\": {\n\t\t\"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n\t},\n\t\"keywords\": [\n\t\t\"empty\",\n\t\t\"project\",\n\t\t\"postgresql\",\n\t\t\"total4\",\n\t\t\"dbms\"\n\t],\n\t\"author\": \"Peter Širka\",\n\t\"license\": \"MIT\"\n}\n"
+        }
+    ]
+}

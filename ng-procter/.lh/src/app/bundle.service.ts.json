@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/bundle.service.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635853146547,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635853146547,
+            "name": "Commit-0",
+            "content": "import { Injectable } from '@angular/core';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { take } from 'rxjs/operators';\r\n\r\nimport { environment } from 'src/environments/environment';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class BundleService {\r\n  bundle: any[];\r\n  constructor(private http: HttpClient) {\r\n    this.http.get(environment.procter_api+'api/tablagen')\r\n      .pipe(\r\n        take(1)\r\n      )\r\n      .subscribe({\r\n        next: (resp: any[]) => {\r\n          this.bundle = resp;\r\n        }\r\n      });\r\n  }\r\n\r\n  get rejectTypes() {\r\n    return this.bundle.filter(b => b.table_type === \"TypeReject\");\r\n  }\r\n  get rejectReasons() {\r\n    return this.bundle.filter(b => b.table_type === \"ReasonsReject\");\r\n  }\r\n  get rejectUnits() {\r\n    return this.bundle.filter(b => b.table_type === \"UnidadesPedido\");\r\n  }\r\n  get accessoryTypes() {\r\n    return this.bundle.filter(b => b.table_type === \"AccessoryTypes\");\r\n  }\r\n  get returnTypes() {\r\n    return this.bundle.filter(b => b.table_type === \"ReturnTypes\");\r\n  }\r\n  get returnReasons() {\r\n    return this.bundle.filter(b => b.table_type === \"EstadoCamion\");\r\n  }\r\n  get pickUpReasonsOutOfTime() {\r\n    return this.bundle.filter(b => b.table_type === \"PickUpReasonsOutOfTime\");\r\n  }\r\n  get estadoOrdenCarga() {\r\n    return this.bundle.filter(b => b.table_type === \"EstadoOrdenCarga\");\r\n  }\r\n}\r\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/layouts/full/full.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635767204618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635767204618,
+            "name": "Commit-0",
+            "content": "import { Component, OnInit, HostListener } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\n\r\nimport { AuthService } from 'src/app/component/login/auth.service';\r\nimport { UIStateService } from 'src/app/shared/spinner/load-widget.service';\r\ndeclare var $: any;\r\n\r\n@Component({\r\n  selector: 'app-full-layout',\r\n  templateUrl: './full.component.html',\r\n  styleUrls: ['./full.component.scss']\r\n})\r\nexport class FullComponent implements OnInit {\r\n\r\n  constructor(public router: Router, public authSrv: AuthService, public uiState: UIStateService) {}\r\n\r\n  public innerWidth: number=0;\r\n  public defaultSidebar='';\r\n  public showMobileMenu = false;\r\n  public expandLogo = false;\r\n  public sidebartype = 'full';\r\n\r\n  Logo() {\r\n    this.expandLogo = !this.expandLogo;\r\n  }\r\n\r\n  ngOnInit() {\r\n    if (this.router.url === '/') {\r\n      this.router.navigate(['/starter']);\r\n    }\r\n    this.defaultSidebar = this.sidebartype;\r\n    this.handleSidebar();\r\n  }\r\n\r\n  @HostListener('window:resize', ['$event'])\r\n  onResize(event:string) {\r\n    this.handleSidebar();\r\n  }\r\n\r\n  handleSidebar() {\r\n    this.innerWidth = window.innerWidth;\r\n    if (this.innerWidth < 1170) {\r\n      this.sidebartype = 'mini-sidebar';\r\n    } else {\r\n      this.sidebartype = this.defaultSidebar;\r\n    }\r\n  }\r\n\r\n  toggleSidebarType() {\r\n    switch (this.sidebartype) {\r\n      case 'full':\r\n        this.sidebartype = 'mini-sidebar';\r\n        break;\r\n\r\n      case 'mini-sidebar':\r\n        this.sidebartype = 'full';\r\n        break;\r\n\r\n      default:\r\n    }\r\n  }\r\n}\r\n"
+        }
+    ]
+}

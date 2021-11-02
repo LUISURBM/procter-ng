@@ -1,0 +1,26 @@
+{
+    "sourceFile": "controllers/api.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1635851700585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635851805383,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,9 @@\n \tROUTE('POST    /api/accessory/        *Accessory --> insert');\n \n \t// Reject\n \tROUTE('GET     /api/return/        *Return --> query');\n+\tROUTE('POST    /api/return/        *Return --> insert');\n \n \t// Tablagen\n \tROUTE('GET     /api/tablagen/        *Tablagen --> query');\n \tROUTE('GET     /api/tablagen/{id}/   *Tablagen --> read');\n"
+                },
+                {
+                    "date": 1635858102136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,8 +26,9 @@\n \n \t// Reject\n \tROUTE('GET     /api/return/        *Return --> query');\n \tROUTE('POST    /api/return/        *Return --> insert');\n+\tROUTE('PUT     /api/return/{id}/   *Return --> update');\n \n \t// Tablagen\n \tROUTE('GET     /api/tablagen/        *Tablagen --> query');\n \tROUTE('GET     /api/tablagen/{id}/   *Tablagen --> read');\n"
+                }
+            ],
+            "date": 1635851700585,
+            "name": "Commit-0",
+            "content": "exports.install = function() {\n\tCORS();\n\n\tROUTE('GET     /', index);\n\n\t// Dashboard\n\tROUTE('GET     /api/dashboard/        *Dashboard --> query');\n\n\t// Planning\n\tROUTE('GET     /api/planning/        *Planning --> query');\n\tROUTE('GET     /api/planning/{id}/   *Planning --> read');\n\tROUTE('POST    /api/planning/        *Planning --> insert');\n\tROUTE('PUT     /api/planning/{id}/   *Planning --> update');\n\tROUTE('DELETE  /api/planning/{id}/   *Planning --> remove');\n\n\t// Reject\n\tROUTE('GET     /api/rejects/        *Rejects --> query');\n\tROUTE('POST    /api/rejects/        *Rejects --> insert');\n\n\t// Invoice\n\tROUTE('GET     /api/invoice/        *Invoice --> query');\n\n\t// Accessory\n\tROUTE('GET     /api/accessory/        *Accessory --> query');\n\tROUTE('POST    /api/accessory/        *Accessory --> insert');\n\n\t// Reject\n\tROUTE('GET     /api/return/        *Return --> query');\n\n\t// Tablagen\n\tROUTE('GET     /api/tablagen/        *Tablagen --> query');\n\tROUTE('GET     /api/tablagen/{id}/   *Tablagen --> read');\n\n\t// Report\n\tROUTE('GET     /api/report/rejects/{fechainicio}/{fechafin}/        *ReportReject --> query');\n\tROUTE('GET     /api/report/returns/{fechainicio}/{fechafin}/        *ReportReturn --> query');\n\tROUTE('GET     /api/report/accessories/{fechainicio}/{fechafin}/    *ReportAccessory --> query');\n\n\t// Usuarios\n\tROUTE('POST     /api/usuarios/        *Usuarios --> insert');\n};\n\nfunction index() {\n\tthis.plain('PostgreSQL API example');\n}"
+        }
+    ]
+}

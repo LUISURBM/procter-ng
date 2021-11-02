@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/component/component.routing.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635767379784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635767379784,
+            "name": "Commit-0",
+            "content": "import { Routes } from '@angular/router';\r\nimport { AccessoriesComponent } from './accesory/accessories.component';\r\nimport { AccessoryComponent } from './accesory/accessory.component';\r\nimport { PlanningComponent } from './planning/planning.component';\r\nimport { RejectComponent } from './reject/reject.component';\r\nimport { RejectsComponent } from './reject/rejects.component';\r\nimport { DevolucionComponent } from './return/return.component';\r\nimport { ReturnsComponent } from './return/returns.component';\r\n\r\n\r\n\r\n\r\nexport const ComponentsRoutes: Routes = [\r\n\r\n\t{\r\n\t\tpath: 'planning',\r\n\t\tcomponent: PlanningComponent,\r\n\t\tdata: {\r\n\t\t\ttitle: 'Planeación'\r\n\t\t}\r\n\t},\r\n\r\n\t{\r\n\t\tpath: 'rejects',\r\n\t\tcomponent: RejectsComponent,\r\n\t\tdata: {\r\n\t\t\ttitle: 'Rechazos'\r\n\t\t}\r\n\t},\r\n\t{\r\n\t\tpath: 'reject',\r\n\t\tcomponent: RejectComponent,\r\n\t\tdata: {\r\n\t\t\ttitle: 'Rechazo'\r\n\t\t},\r\n\t}, {\r\n\t\tpath: 'return',\r\n\t\tcomponent: DevolucionComponent,\r\n\t\tdata: {\r\n\t\t\ttitle: 'Devolución'\r\n\t\t}\r\n\t}, {\r\n\t\tpath: 'returns',\r\n\t\tcomponent: ReturnsComponent,\r\n\t\tdata: {\r\n\t\t\ttitle: 'Devoluciones'\r\n\t\t}\r\n\t}, {\r\n\t\tpath: 'accessories',\r\n\t\tcomponent: AccessoriesComponent,\r\n\t\tdata: {\r\n\t\t\ttitle: 'Accesorio'\r\n\t\t}\r\n\t}, {\r\n\t\tpath: 'accessory',\r\n\t\tcomponent: AccessoryComponent,\r\n\t\tdata: {\r\n\t\t\ttitle: 'Accesorio'\r\n\t\t}\r\n\t},\r\n];\r\n"
+        }
+    ]
+}

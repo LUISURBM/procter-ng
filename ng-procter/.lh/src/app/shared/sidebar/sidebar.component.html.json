@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/shared/sidebar/sidebar.component.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635770549807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635770549807,
+            "name": "Commit-0",
+            "content": "<nav class=\"sidebar-nav\">\r\n    <ul id=\"sidebarnav\">\r\n\t\t<li class=\"nav-devider\"></li>\r\n        <!-- First level menu -->\r\n        <li class=\"sidebar-item\" [class.active]=\"showMenu === sidebarnavItem.title\" *ngFor=\"let sidebarnavItem of sidebarnavItems\"\r\n            [routerLinkActive]=\"sidebarnavItem.submenu.length != 0 ? '' : 'active'\">\r\n            <div class=\"nav-small-cap\" *ngIf=\"sidebarnavItem.extralink === true\">{{sidebarnavItem.title}}</div>\r\n            <a class=\"sidebar-link waves-effect waves-dark\" [routerLink]=\"sidebarnavItem.class === '' ? [sidebarnavItem.path] : null\"\r\n                [ngClass]=\"[sidebarnavItem.class]\" *ngIf=\"!sidebarnavItem.extralink;\" (click)=\"addExpandClass(sidebarnavItem.title)\"\r\n                [routerLinkActive]=\"sidebarnavItem.submenu.length != 0 ? '' : 'active'\">\r\n                <i [ngClass]=\"[sidebarnavItem.icon]\"></i>\r\n                <span class=\"hide-menu\">{{sidebarnavItem.title}}</span>\r\n            </a>\r\n        </li>\r\n        <li class=\"text-center upgrade-btn mt-4 px-4\">\r\n            <a href=\"https://github.com/LUISURBM\" class=\"btn btn-block btn-success text-white\">Ayuda</a>\r\n        </li>\r\n    </ul>\r\n</nav>"
+        }
+    ]
+}

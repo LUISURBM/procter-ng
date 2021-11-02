@@ -1,0 +1,34 @@
+{
+    "sourceFile": "tsconfig.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1635815066252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1635815201111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n     \"module\": \"esnext\",\n     \"moduleResolution\": \"node\",\n     \"importHelpers\": true,\n     \"allowJs\": true,\n+    \"allowSyntheticDefaultImports\": true,\n     \"target\": \"es2015\",\n     \"typeRoots\": [\n       \"node_modules/@types\"\n     ],\n"
+                },
+                {
+                    "date": 1635815446748,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,10 +9,8 @@\n     \"experimentalDecorators\": true,\n     \"module\": \"esnext\",\n     \"moduleResolution\": \"node\",\n     \"importHelpers\": true,\n-    \"allowJs\": true,\n-    \"allowSyntheticDefaultImports\": true,\n     \"target\": \"es2015\",\n     \"typeRoots\": [\n       \"node_modules/@types\"\n     ],\n"
+                },
+                {
+                    "date": 1635821603067,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     \"sourceMap\": true,\n     \"declaration\": false,\n     \"downlevelIteration\": true,\n     \"experimentalDecorators\": true,\n-    \"module\": \"esnext\",\n+    \"module\": \"ES2015\",\n     \"moduleResolution\": \"node\",\n     \"importHelpers\": true,\n     \"target\": \"es2015\",\n     \"typeRoots\": [\n"
+                },
+                {
+                    "date": 1635821613041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     \"sourceMap\": true,\n     \"declaration\": false,\n     \"downlevelIteration\": true,\n     \"experimentalDecorators\": true,\n-    \"module\": \"ES2015\",\n+    \"module\": \"esnext\",\n     \"moduleResolution\": \"node\",\n     \"importHelpers\": true,\n     \"target\": \"es2015\",\n     \"typeRoots\": [\n"
+                }
+            ],
+            "date": 1635815066252,
+            "name": "Commit-0",
+            "content": "{\n  \"compileOnSave\": false,\n  \"compilerOptions\": {\n    \"baseUrl\": \"./\",\n    \"outDir\": \"./dist/out-tsc\",\n    \"sourceMap\": true,\n    \"declaration\": false,\n    \"downlevelIteration\": true,\n    \"experimentalDecorators\": true,\n    \"module\": \"esnext\",\n    \"moduleResolution\": \"node\",\n    \"importHelpers\": true,\n    \"allowJs\": true,\n    \"target\": \"es2015\",\n    \"typeRoots\": [\n      \"node_modules/@types\"\n    ],\n    \"lib\": [\n      \"es2018\",\n      \"dom\"\n    ]\n  },\n  \"angularCompilerOptions\": {\n    \"fullTemplateTypeCheck\": true,\n    \"strictInjectionParameters\": true\n  }\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/shared/sidebar/sidebar.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635766833367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635766833367,
+            "name": "Commit-0",
+            "content": "import { Component, AfterViewInit, OnInit } from '@angular/core';\r\nimport { ROUTES } from './menu-items';\r\nimport { RouteInfo } from './sidebar.metadata';\r\nimport { Router, ActivatedRoute } from '@angular/router';\r\ndeclare var $: any;\r\n\r\n@Component({\r\n  selector: 'app-sidebar',\r\n  templateUrl: './sidebar.component.html'\r\n})\r\nexport class SidebarComponent implements OnInit {\r\n  showMenu = '';\r\n  showSubMenu = '';\r\n  public sidebarnavItems: RouteInfo[]=[];\r\n  // this is for the open close\r\n  addExpandClass(element: any) {\r\n    if (element === this.showMenu) {\r\n      this.showMenu = '0';\r\n    } else {\r\n      this.showMenu = element;\r\n    }\r\n  }\r\n\r\n  constructor(\r\n    private router: Router,\r\n    private route: ActivatedRoute\r\n  ) {}\r\n\r\n  // End open close\r\n  ngOnInit() {\r\n    this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);\r\n  }\r\n}\r\n"
+        }
+    ]
+}

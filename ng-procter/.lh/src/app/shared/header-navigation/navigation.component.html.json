@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/shared/header-navigation/navigation.component.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635768491101,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635768491101,
+            "name": "Commit-0",
+            "content": "<!-- ============================================================== -->\r\n<!-- toggle and nav items -->\r\n<!-- ============================================================== -->\r\n<ul class=\"navbar-nav float-left mr-auto\">\r\n    <li class=\"nav-item d-md-block \">\r\n        <a (click)=\"toggleSidebar.emit()\" class=\"nav-link sidebartoggler waves-effect waves-light\" href=\"javascript:void(0)\">\r\n            <i class=\"mdi mdi-menu font-24 text-white\"></i>\r\n        </a>\r\n    </li>\r\n    <app-breadcrumb></app-breadcrumb>\r\n\t\r\n</ul>\r\n<!-- ============================================================== -->\r\n<!-- Right side toggle and nav items -->\r\n<!-- ============================================================== -->\r\n<ul class=\"navbar-nav float-right\">\r\n    <li class=\"nav-item pr-2 d-md-block\">\r\n        <form class=\"app-search\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\"> \r\n\t\t\t<a class=\"srh-btn\"><i class=\"ti-search\"></i></a> \r\n\t\t</form>\r\n    </li>\r\n    <!-- ============================================================== -->\r\n    <!-- User profile and search -->\r\n    <!-- ============================================================== -->\r\n    <li class=\"nav-item dropdown\"  placement=\"bottom-right\">\r\n        <a  class=\"nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic\" href=\"javascript:void(0)\"\r\n            data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n            <img src=\"assets/images/users/1.jpg\" alt=\"user\" class=\"rounded-circle\" width=\"31\">\r\n        </a>\r\n        <div class=\"dropdown-menu user-dd\" >\r\n            <a class=\"dropdown-item\" href=\"javascript:void(0)\">\r\n                <i class=\"ti-user m-r-5 m-l-5\"></i> My Profile</a>\r\n            <a class=\"dropdown-item\" href=\"javascript:void(0)\">\r\n                <i class=\"ti-wallet m-r-5 m-l-5\"></i> My Balance</a>\r\n            <a class=\"dropdown-item\" href=\"javascript:void(0)\">\r\n                <i class=\"ti-email m-r-5 m-l-5\"></i> Inbox</a>\r\n            <div class=\"dropdown-divider\"></div>\r\n            <a class=\"dropdown-item\" href=\"javascript:void(0)\">\r\n                <i class=\"ti-settings m-r-5 m-l-5\"></i> Account Setting</a>\r\n            <div class=\"dropdown-divider\"></div>\r\n            <a class=\"dropdown-item\" href=\"javascript:void(0)\">\r\n                <i class=\"fa fa-power-off m-r-5 m-l-5\"></i> Logout</a>\r\n            <div class=\"dropdown-divider\"></div>\r\n            <div class=\"p-l-30 p-10\">\r\n                <a href=\"javascript:void(0)\" class=\"btn btn-sm btn-success btn-rounded\">View Profile</a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n    <!-- ============================================================== -->\r\n    <!-- User profile and search -->\r\n    <!-- ============================================================== -->\r\n</ul>"
+        }
+    ]
+}

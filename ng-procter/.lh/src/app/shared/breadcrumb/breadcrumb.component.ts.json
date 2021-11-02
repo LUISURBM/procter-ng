@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/shared/breadcrumb/breadcrumb.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1635850641589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1635850641589,
+            "name": "Commit-0",
+            "content": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { Title } from '@angular/platform-browser';\r\nimport { Router, NavigationEnd, ActivatedRoute, Data } from '@angular/router';\r\nimport { filter, map, mergeMap } from 'rxjs/operators';\r\n\r\n@Component({\r\n  selector: 'app-breadcrumb',\r\n  templateUrl: './breadcrumb.component.html'\r\n})\r\nexport class BreadcrumbComponent implements OnInit {\r\n  //@Input() layout;\r\n  pageInfo:Data=Object.create(null);\r\n  constructor(\r\n    private router: Router,\r\n    private activatedRoute: ActivatedRoute,\r\n    private titleService: Title\r\n  ) {\r\n    this.router.events\r\n      .pipe(filter(event => event instanceof NavigationEnd))\r\n      .pipe(map(() => this.activatedRoute))\r\n      .pipe(\r\n        map(route => {\r\n          while (route.firstChild) {\r\n            route = route.firstChild;\r\n          }\r\n          return route;\r\n        })\r\n      )\r\n      .pipe(filter(route => route.outlet === 'primary'))\r\n      .pipe(mergeMap(route => route.data))\r\n      .subscribe(event => {\r\n        this.titleService.setTitle(event['title']);\r\n        this.pageInfo = event;\r\n      });\r\n  }\r\n  ngOnInit() {}\r\n}\r\n"
+        }
+    ]
+}
