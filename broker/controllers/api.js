@@ -15,6 +15,7 @@ exports.install = function() {
 
 	// Reject
 	ROUTE('GET     /api/rejects/        *Rejects --> query');
+	ROUTE('GET     /api/rejects/{id}/   *Rejects --> read');
 	ROUTE('POST    /api/rejects/        *Rejects --> insert');
 
 	// Invoice

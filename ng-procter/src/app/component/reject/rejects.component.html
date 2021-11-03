@@ -13,7 +13,7 @@
 								(change)="fechainicio()" type="datetime-local" formControlName="fechainicio">
 							<div class="input-group-append">
 								<button type="button" class="btn btn-outline-secondary"
-									(click)="clear('deliveryid')">🗑</button>
+									(click)="clear('fechainicio')">🗑</button>
 							</div>
 						</div>
 					</div>
@@ -24,7 +24,7 @@
 								(change)="fechafin()" type="datetime-local" formControlName="fechafin">
 							<div class="input-group-append">
 								<button type="button" class="btn btn-outline-secondary"
-									(click)="clear('deliveryid')">🗑</button>
+									(click)="clear('fechafin')">🗑</button>
 							</div>
 						</div>
 
@@ -41,7 +41,6 @@
 				</div>
 			</div>
 		</div>
-		<app-loader></app-loader>
 		<ng-container>
 			<wbr-pivot #report id="wdr-component" [toolbar]="true" [width]="'100%'" [height]="500" [report]="report">
 				Pivot data

@@ -29,9 +29,27 @@ NEWSCHEMA('Rejects', function (schema) {
 		console.log('insert reject')
 		console.log(model)
 		// Performs query
-		DBMS().debug().insert('integraciones.rejects', model).log($, model).callback($.done(model.loadid));
+		DBMS().debug().insert('integraciones.rejects', model).log($, model).callback(function(err, response) {
+			console.log(err.detail);
+			$.done(model.loadid)
+		});
 
 	});
 
+	schema.setRead(async function ($) {
+
+		// Performs automatically pagination, sort and all checks
+		// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);
+		var plannings = await DBMS().debug().find('integraciones.planning')
+			.join('delivery', 'integraciones.planning_delivery').on('loadid', 'loadid')
+			.join('invoice', 'integraciones.invoice').on('loadid', 'loadid')
+			.join('product', 'integraciones.invoice_product').on('loadid', 'loadid')
+			.promise();
+		// console.log(data)
+		$.callback(plannings);
+		// Or you can use a simple query via:
+		// DBMS().find('integraciones.planning').callback($.callback);
+
+	});
 
 });

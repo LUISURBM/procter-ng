@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastsContainer } from '../component/toast/toast-container';
 import { ToastComponent } from '../component/toast/toast.component';
+import { UIStateService } from './spinner/load-widget.service';
 import { LoaderWidgetComponent } from './spinner/loader.component';
+import { LoaderInterceptor } from './spinner/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import { LoaderWidgetComponent } from './spinner/loader.component';
     FormsModule,
   ],
   providers: [
+    UIStateService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: LoaderWidgetComponent,
+      useClass: LoaderInterceptor,
       multi: true
     },
   ]

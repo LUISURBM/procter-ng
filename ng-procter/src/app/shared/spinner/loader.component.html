@@ -1,7 +1,8 @@
-<div class="container animation-6" *ngIf="countRequest > 0">
-    <div class="shape shape1"></div>
-    <div class="shape shape2"></div>
-    <div class="shape shape3"></div>
-    <div class="shape shape4"></div>
-</div>
-<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+<ng-container *ngIf="loader.state$ | async as state">
+    <div class="container animation-6" *ngIf="state.loading">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
+    </div>
+</ng-container>

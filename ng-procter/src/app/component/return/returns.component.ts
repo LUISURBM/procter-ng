@@ -80,11 +80,11 @@ export class ReturnsComponent implements OnInit {
 			returnid: this.builder.control(p.returnid, [Validators.required]),
 			reg_status: this.builder.control(p.reg_status, [Validators.required]),
 			customer: this.builder.group({
-				customerid: this.builder.control(p.customer[0].customerid, [Validators.required]),
-				nombre: this.builder.control(p.customer[0].nombre, [Validators.required]),
-				phonenumber: this.builder.control(p.customer[0].phonenumber, [Validators.required]),
-				address: this.builder.control(p.customer[0].address, [Validators.required]),
-				contactname: this.builder.control(p.customer[0].contactname, [Validators.required]),
+				customerid: this.builder.control(p.customer[0].customerid),
+				nombre: this.builder.control(p.customer[0].nombre),
+				phonenumber: this.builder.control(p.customer[0].phonenumber),
+				address: this.builder.control(p.customer[0].address),
+				contactname: this.builder.control(p.customer[0].contactname),
 			}),
 			pickupdate: new FormControl(formatDate(p.pickupdate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 		}
@@ -99,6 +99,10 @@ export class ReturnsComponent implements OnInit {
 			next: (resp: any) => {
 				if (resp.success)
 					this.toastService.show('Guardado OK!', { classname: 'bg-success text-light', delay: 15000 });
+			},
+			error: (error: any) => {
+				if (error.error)
+					error.error.forEach(e => this.toastService.show(e.error, { classname: 'bg-danger text-light', delay: 15000 }));
 			}
 		});
 	}

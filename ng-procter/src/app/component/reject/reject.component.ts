@@ -43,7 +43,7 @@ export class RejectComponent implements OnInit {
 			reg_status: new FormControl("1"),
 			invoice: new FormControl(null)
 		});
-		http.get(environment.procter_api + 'api/planning')
+		http.get(environment.procter_api + 'api/rejects/1')
 			.pipe(
 				take(1)
 			)

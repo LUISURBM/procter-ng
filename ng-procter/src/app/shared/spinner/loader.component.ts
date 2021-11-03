@@ -3,7 +3,8 @@ import {
   Input,
   OnDestroy,
   Inject,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   Router,
@@ -24,29 +25,11 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./loader.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoaderWidgetComponent implements HttpInterceptor {
-  get isSpinnerVisible() {
-    return this.countRequest > 0;
-  };
-
-  public countRequest = 0;
+export class LoaderWidgetComponent  {
   constructor(
-    private router: Router,
-    @Inject(DOCUMENT) private document: Document,
     public loader: UIStateService
   ) {
 
   }
 
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.loader.show(this.countRequest);
-    return next.handle(request)
-      .pipe(
-        finalize(() => {
-          this.countRequest--;
-          this.loader.show(this.countRequest)
-        })
-      );
-  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, Event } from '@angular/router';
+import { ToastService } from './component/toast/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,10 @@ export class AppComponent {
   title = 'app';
   loading = false;
   
-  constructor(private router: Router) {
+  constructor(private router: Router, private toaster: ToastService) {
     this.router.events.subscribe({
       next: (event: Event) => {
+        toaster.clear();
         switch (true) {
           case event instanceof NavigationStart: {
             this.loading = true;
