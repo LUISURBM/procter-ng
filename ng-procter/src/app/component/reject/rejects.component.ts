@@ -9,7 +9,7 @@ import { PlaneacionService } from 'src/app/planeacion.service';
 import { UIStateService } from 'src/app/shared/spinner/load-widget.service';
 import { ToastService } from '../toast/toast.service';
 import { ProcterValidator } from './procter-validator';
-import { rejectsCfg } from './rejects';
+import { rejects, rejectsCfg } from './rejects';
 import { WebDataRocksPivot } from './pivot/webdatarocks';
 
 @Component({
@@ -40,10 +40,10 @@ export class RejectsComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		this.obtenerRechazos(this.group.value);
+		this.buscar();
 		this.group.valueChanges
 			.pipe(filter(c => this.group.valid)).subscribe({
-				next: (v) => this.obtenerRechazos(v)
+				next: (v) => this.buscar()
 			})
 	}
 	ngOnDestroy(): void {
@@ -51,7 +51,12 @@ export class RejectsComponent implements OnInit, OnDestroy {
 	}
 
 	clear(control) {
-		this.group.reset();
+		this.pivot.webDataRocks.off('reportcomplete');
+		this.pivot.webDataRocks.setReport({ ...this.report, dataSource: { data: [] } });
+		if (control)
+			this.group.controls[control].reset();
+		else
+			this.group.reset();
 	}
 
 	fechainicio() {
@@ -70,11 +75,11 @@ export class RejectsComponent implements OnInit, OnDestroy {
 	}
 
 
-	obtenerRechazos(value: any) {
-		this.planeacion.obtenerRechazos(value)
+	buscar() {
+		this.planeacion.obtenerRechazos(this.group.value)
 			.subscribe({
 				next: (resp: any[]) => {
-					this.report = { ...rejectsCfg, dataSource: { data: resp } };
+					this.report = { ...rejectsCfg, dataSource: { data: [...rejects, ...resp!] } };
 					this.rejects = resp;
 					console.log(this.report)
 					if (resp && resp.length > 0) {

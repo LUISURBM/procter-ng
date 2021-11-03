@@ -15,9 +15,9 @@ NEWSCHEMA('Planning', function (schema) {
 			.join('invoice', 'integraciones.invoice').on('loadid', 'loadid')
 			.join('product', 'integraciones.invoice_product').on('loadid', 'loadid')
 			.promise();
-		// console.log(plannings)
-		// var data = plannings.filter(p => !p.loadorderid);
-		$.callback(plannings);
+		var data = plannings.filter(p => !p.loadorderid);
+		// console.log(data)
+		$.callback(data);
 		// Or you can use a simple query via:
 		// DBMS().find('integraciones.planning').callback($.callback);
 

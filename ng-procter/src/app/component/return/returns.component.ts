@@ -30,7 +30,7 @@ export class ReturnsComponent implements OnInit {
 			next: (resp: any[]) => {
 				console.log(resp);
 				resp.forEach(p => this.returns.push(this.builder.group({ ...this.addDevolucion(p) })));
-				this.return = resp.map(o => { return { ...o, enabled: true, inView: false, product: o.product.map(d => { return { ...d, inView: false }; }) }; });
+				this.return = resp.map(o => { return { ...o, enabled: true, inView: false, customer: o.customer.map(c => { return { ...c, inView: false, product: c.product.map(d => { return { ...d, inView: false }; }) }; })[0] }; });
 				// this.group.patchValue({ returns: this.return })
 			}
 		});
@@ -65,7 +65,7 @@ export class ReturnsComponent implements OnInit {
 			this.group.patchValue({ fechainicio: undefined });
 
 	}
-	
+
 	get nuevaDevolucion() {
 		return {
 			pickupreason: this.builder.control(undefined, [Validators.required]),
@@ -76,9 +76,16 @@ export class ReturnsComponent implements OnInit {
 	addDevolucion(p: any) {
 		if (!p) return {};
 		return {
-			pickupreason: this.builder.control(undefined, [Validators.required]),
+			pickupreason: this.builder.control(p.pickupreason, [Validators.required]),
 			returnid: this.builder.control(p.returnid, [Validators.required]),
-			reg_status: this.builder.control(p.drivercc, [Validators.required]),
+			reg_status: this.builder.control(p.reg_status, [Validators.required]),
+			customer: this.builder.group({
+				customerid: this.builder.control(p.customer[0].customerid, [Validators.required]),
+				nombre: this.builder.control(p.customer[0].nombre, [Validators.required]),
+				phonenumber: this.builder.control(p.customer[0].phonenumber, [Validators.required]),
+				address: this.builder.control(p.customer[0].address, [Validators.required]),
+				contactname: this.builder.control(p.customer[0].contactname, [Validators.required]),
+			}),
 			pickupdate: new FormControl(formatDate(p.pickupdate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 		}
 	}

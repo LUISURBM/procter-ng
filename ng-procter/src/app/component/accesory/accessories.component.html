@@ -27,7 +27,15 @@
 									(click)="clear('deliveryid')">🗑</button>
 							</div>
 						</div>
-
+					</div>
+					<div class="col-12 d-flex justify-content-between">
+						<button type="button" class="btn btn-outline-secondary"
+							(click)="clear()">Limpiar</button>
+						<button type="button" class="mt-auto btn btn-sm btn-outline-{{ !group.valid ? 'warning' : 'success'}}"
+						(click)="buscar()"
+							[disabled]="group.invalid">
+							Buscar
+						</button>
 					</div>
 				</div>
 			</div>

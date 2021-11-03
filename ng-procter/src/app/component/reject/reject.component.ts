@@ -39,10 +39,11 @@ export class RejectComponent implements OnInit {
 			quantity: new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(15), Validators.min(1)]),
 			reason: new FormControl(null, [Validators.required]),
 			rejecttype: new FormControl(null, [Validators.required]),
-			commentario: new FormControl(null),
+			commentario: new FormControl(null, [Validators.maxLength(150)]),
+			reg_status: new FormControl("1"),
 			invoice: new FormControl(null)
 		});
-		http.get(environment.procter_api+'api/planning')
+		http.get(environment.procter_api + 'api/planning')
 			.pipe(
 				take(1)
 			)
@@ -65,11 +66,14 @@ export class RejectComponent implements OnInit {
 					if (!this.rejection.controls[`${k}`].errors) return;
 					Object.keys(this.rejection.controls[`${k}`].errors).forEach(l => {
 						if (this.rejection.controls[`${k}`].touched && this.rejection.controls[`${k}`].errors[`${l}`]) {
+							debugger
 							switch (`${l}`) {
 								case 'required':
 									this.messages.push({ message: `${keymessage[k]} es obligatorio` }); break;
 								case 'procter-validation':
 									this.messages.push({ message: `${k} ${l['procter-validation']}` }); break;
+								case 'max-length':
+									this.messages.push({ message: `${k} máximo ${this.rejection.controls[k].errors[l].requiredLength} caracteres; ${this.rejection.controls[k].errors[l].actualLength} actualmente!` }); break;
 								default: break;
 							}
 						}
@@ -84,14 +88,14 @@ export class RejectComponent implements OnInit {
 	get plannings() {
 		return this.group.controls.plannings as FormArray;
 	}
-	
+
 
 	save() {
 		if (!this.group.valid) return;
-		this.http.post(environment.procter_api+'api/rejects/', { ...this.group.value, ...this.rejection.value, delivery: undefined }).subscribe({
+		this.http.post(environment.procter_api + 'api/rejects/', { ...this.group.value, ...this.rejection.value, delivery: undefined }).subscribe({
 			next: (resp: any) => {
 				if (resp.success)
-					this.toastService.show('Guardado OK!', { classname: 'bg-danger text-light', delay: 15000 });
+					this.toastService.show('Guardado OK!', { classname: 'bg-success text-light', delay: 15000 });
 				if (!resp.success)
 					resp.forEach(e => this.toastService.show(e.error, { classname: 'bg-danger text-light', delay: 15000 }));
 			},

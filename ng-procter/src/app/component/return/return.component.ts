@@ -84,9 +84,9 @@ export class DevolucionComponent implements OnInit {
 		this.http.post(environment.procter_api+'/return/', { ...this.group.value, ...this.returned.value, loadorderid: undefined }).subscribe({
 			next: (resp: any) => {
 				if (resp.success)
-					this.toastService.show('Guardado OK!', { classname: 'bg-danger text-light', delay: 15000 });
+					this.toastService.show('Guardado OK!', { classname: 'bg-success text-light', delay: 15000 });
 				if (!resp.success)
-					resp.forEach(e => this.toastService.show(e.error, { classname: 'bg-danger text-light', delay: 15000 }));
+					resp.forEach(e => this.toastService.show(JSON.parse(e), { classname: 'bg-warning text-light', delay: 15000 }));
 			},
 			error: (error: any) => {
 				error.error.forEach(e => this.toastService.show(e.error, { classname: 'bg-danger text-light', delay: 15000 }));

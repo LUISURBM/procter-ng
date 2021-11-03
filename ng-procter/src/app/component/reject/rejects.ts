@@ -1,29 +1,19 @@
+import { pivotCfgI18n } from "../pivot-cfg";
+
 
 
 export const rejects = [
     {
-        "Color": { type: "string" },
-        "Country": { type: "string", dimensionUniqueName: "Geography" },
-        "State": { type: "string", dimensionUniqueName: "Geography" },
-        "City": { type: "string", dimensionUniqueName: "Geography" },
-        "Price": { type: "number" },
-        "Quantity": { type: "number" }
-    },
-    {
-        "Color": "green",
-        "Country": "Canada",
-        "State": "Ontario",
-        "City": "Toronto",
-        "Price": 174,
-        "Quantity": 22
-    },
-    {
-        "Color": "red",
-        "Country": "USA",
-        "State": "California",
-        "City": "Los Angeles",
-        "Price": 166,
-        "Quantity": 19
+        "loadorderid": { type: 'sring' },
+        "creation_date": { type: 'sring' },
+        "rejectdate": { type: 'sring' },
+        "invoiceid": { type: 'sring' },
+        "deliveryid": { type: 'sring' },
+        "quantity": { type: 'sring' },
+        "reason": { type: 'sring' },
+        "salesunit": { type: 'sring' },
+        "referencenumber": { type: 'sring' },
+        "rejecttype": { type: 'sring' },
     }
 ];
 
@@ -31,6 +21,7 @@ export const rejectsCfg = {
     dataSource: {
         data: rejects
     },
+    localization: pivotCfgI18n,
     options: {
         "viewType": "grid",
         "grid": {
@@ -38,8 +29,8 @@ export const rejectsCfg = {
             "title": "",
             "showFilter": true,
             "showHeaders": true,
-            "showTotals": "on",
-            "showGrandTotals": "on",
+            "showTotals": "off",
+            "showGrandTotals": "off",
             "grandTotalsPosition": "top",
             "showExtraTotalLabels": false,
             "showHierarchies": true,
@@ -70,7 +61,7 @@ export const rejectsCfg = {
         "filter": {
             "weekOffset": 1,
             "dateFormat": "dd/MM/yyyy",
-            "liveSearch": true
+            "liveSearch": false
         },
         "configuratorActive": false,
         "configuratorButton": true,
@@ -94,7 +85,7 @@ export const rejectsCfg = {
         "showOutdatedDataAlert": false,
         "showAggregationLabels": true,
         "sortAlphabetically": [],
-        "showAllFieldsDrillThrough": false,
+        "showAllFieldsDrillThrough": true,
         "liveFiltering": false,
         "showFieldListSearch": false,
         "validateFormulas": true,
@@ -107,6 +98,8 @@ export const rejectsCfg = {
     slice: {
         columns: [
             { uniqueName: "loadorderid" },
+            { uniqueName: "creation_date" },
+            { uniqueName: "rejectdate" },
             { uniqueName: "invoiceid" },
             { uniqueName: "loadorderid" },
             { uniqueName: "deliveryid" },
@@ -115,8 +108,6 @@ export const rejectsCfg = {
             { uniqueName: "salesunit" },
             { uniqueName: "referencenumber" },
             { uniqueName: "rejecttype" },
-            { uniqueName: "rejectdate" },
-            { uniqueName: "creation_date" }
-        ]
+        ],
     }
 }

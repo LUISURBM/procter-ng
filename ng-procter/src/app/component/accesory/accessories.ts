@@ -1,29 +1,21 @@
+import { pivotCfgI18n } from "../pivot-cfg";
 
 
 export const accessories = [
     {
-        "Color": { type: "string" },
-        "Country": { type: "string", dimensionUniqueName: "Geography" },
-        "State": { type: "string", dimensionUniqueName: "Geography" },
-        "City": { type: "string", dimensionUniqueName: "Geography" },
-        "Price": { type: "number" },
-        "Quantity": { type: "number" }
-    },
-    {
-        "Color": "green",
-        "Country": "Canada",
-        "State": "Ontario",
-        "City": "Toronto",
-        "Price": 174,
-        "Quantity": 22
-    },
-    {
-        "Color": "red",
-        "Country": "USA",
-        "State": "California",
-        "City": "Los Angeles",
-        "Price": 166,
-        "Quantity": 19
+        "requesteddate": { type: "string" },
+        loadorderid: { type: "string"},
+        customerid: { type: "string"},
+        deiveryid: { type: "string"},
+        reg_status: { type: "string"},
+        accessorytype: { type: "string"},
+        costoverrun: { type: "string"},
+        quantity: { type: "string"},
+        salesunit: { type: "string"},
+        comentarios: { type: "string"},
+        enviado: { type: "string"},
+        creation_date: { type: "string"},
+        
     }
 ];
 
@@ -31,6 +23,7 @@ export const accessoriesCfg = {
     dataSource: {
         data: accessories
     },
+    localization: pivotCfgI18n,
     options: {
         "viewType": "grid",
         "grid": {
@@ -106,18 +99,18 @@ export const accessoriesCfg = {
     },
     slice: {
         columns: [
+            { uniqueName: "requesteddate" },
+            { uniqueName: "loadorderid" },
+            { uniqueName: "customerid" },
+            { uniqueName: "deiveryid" },
             { uniqueName: "reg_status" },
             { uniqueName: "accessorytype" },
             { uniqueName: "costoverrun" },
             { uniqueName: "quantity" },
             { uniqueName: "salesunit" },
             { uniqueName: "comentarios" },
-            { uniqueName: "envido" },
+            { uniqueName: "enviado" },
             { uniqueName: "creation_date" },
-            { uniqueName: "loadorderid" },
-            { uniqueName: "requesteddate" },
-            { uniqueName: "customerid" },
-            { uniqueName: "deiveryid" },
         ]
     }
 }

@@ -17,69 +17,131 @@
 			</div>
 			<div class="card-body"
 				[ngClass]="{'tab-content-visible collapse show': return[p]?.inView, 'tab-content': !return[p]?.inView}">
-				<h5 class="sub-title">Información del vehículo:</h5>
-				<div class="row mobile-inputs" [formGroupName]="p">
-					<div class="col-12 col-sm-6">
-						<div class="form-group">
-							<div class="col-sm-12 col-md-6">
-								<label class="col-form-label">Estado devolución:</label>
-							</div>
-							<div class="input-group ">
-								<select class="custom-select form-control" formControlName="reg_status">
-									<option selected disabled value>-- SIN SELECCIÓN --</option>
-									<option selected blankoption *ngFor="let bundle of bundleSrv.returnReasons"
-										[value]="bundle.table_code">{{bundle.descripcion}}</option>
-								</select>
-								<div class="input-group-append">
-									<button type="button" class="btn btn-outline-secondary"
-										(click)="clear('reg_status', p)">🗑</button>
+				<ng-container [formGroupName]="p">
+					<h5 class="sub-title">Información de la recolección:</h5>
+					<div class="row mobile-inputs">
+						<div class="col-12 col-sm-6 col-md-4">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Estado devolución:</label>
+								</div>
+								<div class="input-group col">
+									<select class="custom-select form-control" formControlName="reg_status">
+										<option selected disabled value>-- SIN SELECCIÓN --</option>
+										<option selected blankoption *ngFor="let bundle of bundleSrv.returnReasons"
+											[value]="bundle.table_code">{{bundle.descripcion}}</option>
+									</select>
+									<div class="input-group-append">
+										<button type="button" class="btn btn-outline-secondary"
+											(click)="clear('reg_status', p)">🗑</button>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 col-sm-6">
-						<div class="form-group">
-							<div class="col-sm-12 col-md-6">
-								<label class="col-form-label">Motivo devolución:</label>
-							</div>
-							<div class="input-group ">
-								<select class="custom-select form-control" formControlName="pickupreason">
-									<option selected disabled value>-- SIN SELECCIÓN --</option>
-									<option selected blankoption *ngFor="let bundle of bundleSrv.pickUpReasonsOutOfTime"
-										[value]="bundle.table_code">{{bundle.descripcion}}</option>
-								</select>
-								<div class="input-group-append">
-									<button type="button" class="btn btn-outline-secondary"
-										(click)="clear('pickupreason', p)">🗑</button>
+						<div class="col-12 col-sm-6 col-md-4">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Motivo devolución:</label>
+								</div>
+								<div class="input-group col">
+									<select class="custom-select form-control" formControlName="pickupreason">
+										<option selected disabled value>-- SIN SELECCIÓN --</option>
+										<option selected blankoption
+											*ngFor="let bundle of bundleSrv.pickUpReasonsOutOfTime"
+											[value]="bundle.table_code">{{bundle.descripcion}}</option>
+									</select>
+									<div class="input-group-append">
+										<button type="button" class="btn btn-outline-secondary"
+											(click)="clear('pickupreason', p)">🗑</button>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<div class="col-sm-12 col-md-6">
-								<label class="col-form-label">Fecha devolución:</label>
-							</div>
-							<div class="input-group col-sm-12 col-md-6">
-								<input class="form-control" placeholder="Fecha devolución" [min]="minDate"
-									[max]="maxDate" (change)="fechadevolucion()" type="datetime-local"
-									formControlName="pickupdate">
-								<div class="input-group-append">
-									<button type="button" class="btn btn-outline-secondary"
-										(click)="clear('pickupdate', p)">🗑</button>
+						<div class="col-12 col-sm-6 col-md-4">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Fecha devolución:</label>
+								</div>
+								<div class="input-group col">
+									<input class="form-control" placeholder="Fecha devolución" [min]="minDate"
+										[max]="maxDate" (change)="fechadevolucion()" type="datetime-local"
+										formControlName="pickupdate">
+									<div class="input-group-append">
+										<button type="button" class="btn btn-outline-secondary"
+											(click)="clear('pickupdate', p)">🗑</button>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div *ngIf="messages[p]?.length > 0" class="col-12">
-						<pre>
-							<div *ngFor="let message of messages[p]; let im of index" >{{message.message}}</div>
-						</pre>
+						<hr>
 					</div>
-					<hr>
+					<h5 class="sub-title">Información del cliente:</h5>
+					<div class="row mobile-inputs" formGroupName="customer">
+
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Identificación del cliente:</label>
+								</div>
+								<div class="input-group col">
+									<input type="text" class="form-control form-control-info"
+										placeholder="Identificador del cliente" disabled readonly formControlName="customerid">
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Nombre del cliente :</label>
+								</div>
+								<div class="input-group col">
+									<input type="text" class="form-control form-control-info"
+										placeholder="Nombre del cliente " disabled readonly formControlName="nombre">
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Teléfono del cliente :</label>
+								</div>
+								<div class="input-group col">
+									<input type="text" class="form-control form-control-info"
+										placeholder="Teléfono del cliente " disabled readonly formControlName="phonenumber">
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Dirección del cliente :</label>
+								</div>
+								<div class="input-group col">
+									<input type="text" class="form-control form-control-info"
+										placeholder="Dirección del cliente " disabled readonly formControlName="address">
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<div class="col">
+									<label class="col-form-label">Nombre del contacto :</label>
+								</div>
+								<div class="input-group col">
+									<input type="text" class="form-control form-control-info"
+										placeholder="Nombre del contacto " disabled readonly formControlName="contactname">
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-container>
+
+				<div *ngIf="messages[p]?.length > 0" class="col-12">
+					<pre>
+					<div *ngFor="let message of messages[p]; let im of index" >{{message.message}}</div>
+				</pre>
 				</div>
-
 				<h5 class="card-title"> Detalle de los productos: </h5>
 				<div class="card-block table-border-style">
 					<div class="table-responsive">
@@ -94,7 +156,7 @@
 									<th>Descripción</th>
 								</tr>
 							</thead>
-							<tbody *ngFor="let product of return[p]?.product; let i = index">
+							<tbody *ngFor="let product of return[p]?.customer?.product; let i = index">
 								<tr (click)="product.inView = product?.inView ? 0 : 1; ">
 
 									<td>{{i+1}}</td>

@@ -38,4 +38,16 @@ NEWSCHEMA('Accessory', function (schema) {
 
 	});
 
+	schema.setRead(async function ($) {
+
+		// Performs query
+		// 404 error will be returned if the no records won't be updated
+		var plannings = await DBMS().debug().find('integraciones.planning')
+			.join('delivery', 'integraciones.planning_delivery').on('loadid', 'loadid')
+			.promise();
+		// console.log(plannings)
+		$.callback(plannings);
+
+	});
+
 });

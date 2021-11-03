@@ -8,7 +8,7 @@ import { BundleService } from 'src/app/bundle.service';
 import { WebDataRocksPivot } from '../reject/pivot/webdatarocks';
 import { ProcterValidator } from '../reject/procter-validator';
 import { ToastService } from '../toast/toast.service';
-import { accessoriesCfg } from './accessories';
+import { accessories, accessoriesCfg } from './accessories';
 import { environment } from "src/environments/environment";
 @Component({
 	selector: 'app-accessories-basic',
@@ -39,19 +39,23 @@ export class AccessoriesComponent implements OnInit {
 	ngOnInit(): void {
 		if (this.group.valid)
 			this.group.valueChanges.subscribe({
-				next: (v) =>
-					this.http.get(environment.procter_api+'/report/accessories/' + this.group.value.fechainicio + "/" + this.group.value.fechafin)
-						.pipe(take(1))
-						.subscribe({
-							next: (resp: any[]) => {
-								console.log(resp)
-								this.report = { ...accessoriesCfg, dataSource: { data: resp! } };
-								this.accessories = resp;
-							}
-						})
-
+				next: (v) => this.buscar()
 			})
 
+	}
+	buscar(): void {
+		this.http.get(environment.procter_api + 'api/report/accessories/' + this.group.value.fechainicio + "/" + this.group.value.fechafin)
+			.pipe(take(1))
+			.subscribe({
+				next: (resp: any[]) => {
+					console.log(resp)
+					this.report = { ...accessoriesCfg, dataSource: { data: [...accessories, ...resp!] } };
+					console.log(this.report)
+					this.accessories = resp;
+					this.pivot.webDataRocks.off('reportcomplete');
+					this.pivot.webDataRocks.setReport(this.report)
+				}
+			})
 	}
 
 	clear(control) {

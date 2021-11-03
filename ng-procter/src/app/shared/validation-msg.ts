@@ -4,6 +4,7 @@ export const
         salesunit: 'Unidad de venta',
         reason: 'Tipo de rechazo',
         comentario: 'Comentario',
+        commentario: 'Comentario',
         creation_date: "Fecha creación",
         creation_user: "Usuario creación",
         delivery: "Número de entregra",

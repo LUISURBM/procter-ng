@@ -39,7 +39,7 @@ export class AccessoryComponent implements OnInit {
 			comentarios: new FormControl(null)
 		});
 
-		http.get(environment.procter_api + 'api/planning')
+		http.get(environment.procter_api + 'api/accessory/1')
 			.pipe(
 				take(1)
 			)
@@ -96,7 +96,10 @@ export class AccessoryComponent implements OnInit {
 		if (!this.accessory.valid) return;
 		this.http.post(environment.procter_api + 'api/accessory/', { ...this.group.value, ...this.accessory.value }).subscribe({
 			next: (resp: any) => {
-				this.toastService.show(resp, { classname: 'bg-danger text-light', delay: 15000 });
+				if (resp.success)
+					this.toastService.show('Guardado OK!', { classname: 'bg-success text-light', delay: 15000 });
+				if (!resp.success)
+					resp.forEach(e => this.toastService.show(JSON.parse(e), { classname: 'bg-warning text-light', delay: 15000 }));
 			},
 			error: (error: any) => {
 				error.error.forEach(e => this.toastService.show(e.error, { classname: 'bg-danger text-light', delay: 15000 }));

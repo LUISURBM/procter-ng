@@ -22,6 +22,7 @@ exports.install = function() {
 
 	// Accessory
 	ROUTE('GET     /api/accessory/        *Accessory --> query');
+	ROUTE('GET     /api/accessory/{id}    *Accessory --> read');
 	ROUTE('POST    /api/accessory/        *Accessory --> insert');
 
 	// Reject

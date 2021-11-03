@@ -10,6 +10,7 @@ NEWSCHEMA('Return', function (schema) {
 		// Performs automatically pagination, sort and all checks
 		// DBMS().list('integraciones.planning').autofill($, 'creation_date:Date,last_update:Date', 'id', 'creation_date_desc', 50).callback($.callback);
 		var builder = await DBMS().debug().find('integraciones.returns')
+			.join('customer', 'integraciones.returns_customer').on('returnid', 'returnid')
 			.join('product', 'integraciones.returns_products').on('returnid', 'returnid').promise()
 			$.callback(builder);
 		// Or you can use a simple query via:
