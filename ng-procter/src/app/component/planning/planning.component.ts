@@ -22,14 +22,7 @@ export class PlanningComponent implements OnInit {
 			plannings: builder.array([]),
 		});
 
-		this.http.get(environment.procter_api + 'api/planning').pipe(take(1)).subscribe({
-			next: (resp: any[]) => {
-				console.log(resp);
-				resp.forEach(p => this.plannings.push(this.builder.group({ ...this.addPlan(p) })));
-				this.planning = resp.map(o => { return { ...o, enabled: true, inView: false, delivery: o.delivery.map(d => { return { ...d, inView: false, invoice: d.invoice.map(i => { return { ...i, inView: undefined }; }) }; }) }; });
-				// this.group.patchValue({ plannings: this.planning })
-			}
-		});
+		this.buscar();
 	}
 
 	ngOnInit(): void {
@@ -54,6 +47,19 @@ export class PlanningComponent implements OnInit {
 				})
 			}
 		})
+	}
+	buscar(): void {
+		this.planning = [];
+		this.group.reset();
+		this.plannings.reset();
+		this.http.get(environment.procter_api + 'api/planning').pipe(take(1)).subscribe({
+			next: (resp: any[]) => {
+				console.log(resp);
+				resp.forEach(p => this.plannings.push(this.builder.group({ ...this.addPlan(p) })));
+				this.planning = resp.map(o => { return { ...o, enabled: true, inView: false, delivery: o.delivery.map(d => { return { ...d, inView: false, invoice: d.invoice.map(i => { return { ...i, inView: undefined }; }) }; }) }; });
+				// this.group.patchValue({ plannings: this.planning })
+			}
+		});
 	}
 
 	get nuevoPlan() {
@@ -81,8 +87,10 @@ export class PlanningComponent implements OnInit {
 	save(plan, i) {
 		this.http.put(environment.procter_api + 'api/planning/' + plan.loadid, { ...plan, ...this.group.value.plannings[i], delivery: undefined }).subscribe({
 			next: (resp: any) => {
-				if (resp.success)
+				if (resp.success) {
+					this.buscar();
 					this.toastService.show('Guardado OK!', { classname: 'bg-success text-light', delay: 2000 });
+				}
 			}
 		});
 	}

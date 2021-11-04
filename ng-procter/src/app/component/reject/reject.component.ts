@@ -49,7 +49,7 @@ export class RejectComponent implements OnInit {
 			)
 			.subscribe({
 				next: (resp: any[]) => {
-					this.planning = resp;
+					this.planning = resp.filter( p => p.loadorderid);
 				}
 			});
 	}

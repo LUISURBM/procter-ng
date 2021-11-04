@@ -175,8 +175,10 @@ ALTER TABLE integraciones.planning_delivery OWNER TO postgres;
 -- TOC entry 203 (class 1259 OID 24857)
 -- Name: rejects; Type: TABLE; Schema: integraciones; Owner: postgres
 --
+CREATE SEQUENCE integraciones.integraciones_rejects_id_seq;
 
 CREATE TABLE integraciones.rejects (
+    rejectid integer NOT NULL DEFAULT nextval('integraciones.integraciones_rejects_id_seq'),
     reg_status character varying(1) DEFAULT ''::character varying NOT NULL,
     loadorderid character varying(20) NOT NULL,
     loadid integer DEFAULT 0 NOT NULL,
@@ -197,6 +199,9 @@ CREATE TABLE integraciones.rejects (
     user_update character varying(20) DEFAULT ''::character varying NOT NULL
 );
 
+
+ALTER SEQUENCE integraciones.integraciones_rejects_id_seq
+OWNED BY integraciones.rejects.rejectid;
 
 ALTER TABLE integraciones.rejects OWNER TO postgres;
 
@@ -400,7 +405,7 @@ INSERT INTO integraciones.planning_delivery (loadid, deliveryid, sequencenumber,
 -- Data for Name: rejects; Type: TABLE DATA; Schema: integraciones; Owner: postgres
 --
 
-INSERT INTO integraciones.rejects (reg_status, loadorderid, loadid, invoiceid, deliveryid, rejecttype, rejectdate, referencenumber, salesunit, quantity, reason, co, commentario, enviado, creation_date, creation_user, last_update, user_update) VALUES ('', '101010', 16820286, 1060638070, 706569748, 0, '2021-10-26 08:17:00', 0, NULL, 1, 1, NULL, '1', 'N', '2021-10-26 13:52:58.668811', '', '2021-10-26 13:52:58.43', 'PROCTER');
+INSERT INTO integraciones.rejects (reg_status, rejectid, loadorderid, loadid, invoiceid, deliveryid, rejecttype, rejectdate, referencenumber, salesunit, quantity, reason, co, commentario, enviado, creation_date, creation_user, last_update, user_update) VALUES ('', 1, '101010', 16820286, 1060638070, 706569748, 0, '2021-10-26 08:17:00', 0, NULL, 1, 1, NULL, '1', 'N', '2021-10-26 13:52:58.668811', '', '2021-10-26 13:52:58.43', 'PROCTER');
 
 
 --
@@ -417,8 +422,8 @@ INSERT INTO integraciones.rejects (reg_status, loadorderid, loadid, invoiceid, d
 -- Data for Name: returns; Type: TABLE DATA; Schema: integraciones; Owner: postgres
 --
 
-INSERT INTO integraciones.returns (reg_status, returnid, pickupdate, commentario, creation_date, creation_user, last_update, user_update) VALUES ('', 90000001, '2021-03-25 14:00:00', 'Comentario Adicional', '2021-10-26 13:59:25.317733', 'WSPROCTER', '2021-10-26 13:59:25.317733', 'WSPROCTER');
-INSERT INTO integraciones.returns (reg_status, returnid, pickupdate, commentario, creation_date, creation_user, last_update, user_update) VALUES ('', 90000002, '2021-03-26 14:00:00', 'Comentario Adicional', '2021-10-26 13:59:25.317733', 'WSPROCTER', '2021-10-26 13:59:25.317733', 'WSPROCTER');
+INSERT INTO integraciones.returns (reg_status, loadorderid, returnid, pickupdate, commentario, creation_date, creation_user, last_update, user_update) VALUES ('', '12345', 90000001, '2021-03-25 14:00:00', 'Comentario Adicional', '2021-10-26 13:59:25.317733', 'WSPROCTER', '2021-10-26 13:59:25.317733', 'WSPROCTER');
+INSERT INTO integraciones.returns (reg_status, loadorderid, returnid, pickupdate, commentario, creation_date, creation_user, last_update, user_update) VALUES ('', '12345', 90000002, '2021-03-26 14:00:00', 'Comentario Adicional', '2021-10-26 13:59:25.317733', 'WSPROCTER', '2021-10-26 13:59:25.317733', 'WSPROCTER');
 
 
 --
@@ -558,7 +563,7 @@ ALTER TABLE ONLY integraciones.planning
 --
 
 ALTER TABLE ONLY integraciones.rejects
-    ADD CONSTRAINT rejects_pkey PRIMARY KEY (loadorderid, loadid);
+    ADD CONSTRAINT rejects_pkey PRIMARY KEY (rejectid);
 
 
 --

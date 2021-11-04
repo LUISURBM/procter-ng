@@ -20,18 +20,18 @@
                     <h5 class="sub-title">Información de la recolección:</h5>
                     <div class="row mobile-inputs">
 
-                        <div class="col-12 col-sm-6 col-md-4">
+                        <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Id. Planilla:</label>
                                 </div>
                                 <div class="input-group col">
-                                    <input type="text" class="form-control form-control-info"
-                                        placeholder="Id. de planilla" disabled readonly formControlName="loadorderid">
+                                    <input type="number" class="form-control form-control-info"
+                                        placeholder="Id. de planilla" formControlName="loadorderid">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4">
+                        <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Estado devolución:</label>
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4">
+                        <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Motivo devolución:</label>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4">
+                        <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Fecha real devolución:</label>
@@ -77,10 +77,10 @@
                                 <div class="input-group col">
                                     <input class="form-control" placeholder="Fecha devolución" [min]="minDate"
                                         [max]="maxDate" (change)="fechadevolucion()" type="datetime-local"
-                                        formControlName="pickupdate">
+                                        formControlName="pickupreasonoutoftime">
                                     <div class="input-group-append">
                                         <button type="button" class="btn btn-outline-secondary"
-                                            (click)="clear('pickupdate', p)">🗑</button>
+                                            (click)="clear('pickupreasonoutoftime', p)">🗑</button>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                     </div>
                     <h5 class="sub-title">Información del cliente:</h5>
                     <div class="row mobile-inputs" formGroupName="customer">
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Identificación del cliente:</label>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Nombre del cliente :</label>
@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Teléfono del cliente :</label>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Dirección del cliente :</label>
@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Nombre del contacto :</label>
@@ -149,14 +149,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <div class="col">
                                     <label class="col-form-label">Fecha no devolución:</label>
                                 </div>
                                 <div class="input-group col">
                                     <input class="form-control" placeholder="Fecha devolución" type="datetime-local"
-                                        disabled readonly formControlName="pickupreasonoutoftime">
+                                        disabled readonly formControlName="pickupdate">
                                 </div>
                             </div>
                         </div>

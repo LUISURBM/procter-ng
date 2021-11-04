@@ -29,10 +29,7 @@ NEWSCHEMA('Rejects', function (schema) {
 		console.log('insert reject')
 		console.log(model)
 		// Performs query
-		DBMS().debug().insert('integraciones.rejects', model).log($, model).callback(function(err, response) {
-			console.log(err.detail);
-			$.done(model.loadid)
-		});
+		DBMS().debug().insert('integraciones.rejects', model).log($, model).callback($.done(model.rejectid));
 
 	});
 

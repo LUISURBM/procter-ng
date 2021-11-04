@@ -16,7 +16,6 @@ import { ToastService } from '../toast/toast.service';
 })
 export class AccessoryComponent implements OnInit {
 	planning: any[] = [];
-	invoice: any[] = [];
 	messages: any[];
 	group: FormGroup;
 	accessory: FormGroup;
@@ -49,15 +48,15 @@ export class AccessoryComponent implements OnInit {
 				}
 			});
 
-		http.get(environment.procter_api + 'api/accessory')
-			.pipe(
-				take(1)
-			)
-			.subscribe({
-				next: (resp: any[]) => {
-					this.invoice = resp;
-				}
-			});
+		// http.get(environment.procter_api + 'api/accessory')
+		// 	.pipe(
+		// 		take(1)
+		// 	)
+		// 	.subscribe({
+		// 		next: (resp: any[]) => {
+		// 			this.invoice = resp;
+		// 		}
+		// 	});
 	}
 
 
@@ -129,7 +128,7 @@ export class AccessoryComponent implements OnInit {
 		return selectedorder && selectedorder.length > 0 ? selectedorder[0] : undefined;
 	}
 	loadorderid() {
-		if (this.invoice.filter(p => p.loadorderid == `${this.group.value.loadorderid}`).length == 0)
+		if (this.planning.filter(p => p.loadorderid == `${this.group.value.loadorderid}`).length == 0)
 			this.group.patchValue({ loadorderid: undefined });
 	}
 	loadid() {
