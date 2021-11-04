@@ -80,6 +80,7 @@ export class ReturnsComponent implements OnInit {
 			returnid: this.builder.control(p.returnid, [Validators.required]),
 			loadorderid: this.builder.control(p.loadorderid, [Validators.required]),
 			reg_status: this.builder.control(p.reg_status, [Validators.required]),
+			reg_selected: this.builder.control(p.reg_selected),
 			customer: this.builder.group({
 				customerid: this.builder.control(p.customer[0].customerid),
 				nombre: this.builder.control(p.customer[0].nombre),

@@ -2,7 +2,7 @@ import { RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: '/component/planning',
+    path: '/component/plannings',
     title: 'Planeación',
     icon: 'mdi mdi-clipboard-text',
     class: '',

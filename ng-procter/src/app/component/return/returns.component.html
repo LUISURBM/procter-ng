@@ -168,6 +168,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>#</th>
                                     <th>Revisado</th>
                                     <th># Refencia</th>
@@ -179,6 +180,9 @@
                             <tbody *ngFor="let product of return[p]?.customer?.product; let i = index">
                                 <tr (click)="product.inView = product?.inView ? 0 : 1; ">
 
+                                    <td><button class="btn btn-sm btn-outline-primary ml-2">{{product?.reg_selected ===
+                                            'N'
+                                            ? '':'✔' }}</button></td>
                                     <td>{{i+1}}</td>
                                     <td>{{product.reviewcontent ? 'Sí' : 'No'}}</td>
                                     <td> {{product.referencenumber}}</td>

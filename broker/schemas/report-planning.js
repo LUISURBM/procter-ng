@@ -1,11 +1,11 @@
-NEWSCHEMA('ReportAccessory', function (schema) {
+NEWSCHEMA('ReportPlanning', function (schema) {
 
 	schema.setQuery(function ($,model) {
 
-		console.log('accessory');
+		console.log('planning');
 		console.log($.params);
 
-		DBMS().debug().find('integraciones.accessory')
+		DBMS().debug().find('integraciones.planning')
 			.between('creation_date', $.params.fechainicio, $.params.fechafin)
 			.callback($.callback);
 

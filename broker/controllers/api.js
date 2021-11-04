@@ -39,6 +39,7 @@ exports.install = function() {
 	ROUTE('GET     /api/report/rejects/{fechainicio}/{fechafin}/        *ReportReject --> query');
 	ROUTE('GET     /api/report/returns/{fechainicio}/{fechafin}/        *ReportReturn --> query');
 	ROUTE('GET     /api/report/accessories/{fechainicio}/{fechafin}/    *ReportAccessory --> query');
+	ROUTE('GET     /api/report/plannings/{fechainicio}/{fechafin}/    *ReportPlanning --> query');
 
 	// Usuarios
 	ROUTE('POST     /api/usuarios/        *Usuarios --> insert');

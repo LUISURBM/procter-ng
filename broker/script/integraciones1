@@ -272,6 +272,7 @@ ALTER TABLE integraciones.returns_customer OWNER TO postgres;
 
 CREATE TABLE integraciones.returns_products (
     reg_status character varying(1) DEFAULT ''::character varying NOT NULL,
+    reg_selected character varying(1) DEFAULT 'S'::character varying NOT NULL,
     returnid integer DEFAULT 0 NOT NULL,
     referencenumber integer DEFAULT 0 NOT NULL,
     description character varying(100),
