@@ -5,6 +5,7 @@ import { AccessoriesComponent } from './accesory/accessories.component';
 import { AccessoryComponent as AccessoryComponent } from './accesory/accessory.component';
 import { ComponentsRoutes } from './component.routing';
 import { PlanningComponent } from './planning/planning.component';
+import { PlanningsComponent } from './planning/plannings.component';
 import { WebDataRocksPivot } from './reject/pivot/webdatarocks';
 import { RejectComponent } from './reject/reject.component';
 import { RejectsComponent } from './reject/rejects.component';
@@ -18,6 +19,7 @@ import { ReturnsComponent } from './return/returns.component';
   ],
   declarations: [
     PlanningComponent,
+    PlanningsComponent,
     RejectComponent,
     RejectsComponent,
     AccessoryComponent,

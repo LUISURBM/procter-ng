@@ -17,7 +17,7 @@ export const Approutes: Routes = [
     path: '', /*canActivate: [AuthGuardService]*/
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/component', pathMatch: 'full' },
+      { path: '', redirectTo: '/component/plannings', pathMatch: 'full' },
       {
         path: 'component',
         loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
