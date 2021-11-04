@@ -229,9 +229,11 @@ ALTER TABLE integraciones.rejects_products OWNER TO postgres;
 CREATE TABLE integraciones.returns (
     reg_status character varying(1) DEFAULT ''::character varying NOT NULL,
     returnid integer DEFAULT 0 NOT NULL,
+    loadorderid character varying(20) NOT NULL,
     pickupdate timestamp without time zone DEFAULT '0099-01-01 00:00:00'::timestamp without time zone,
     commentario character varying(150),
     pickupreason integer DEFAULT 0 NOT NULL,
+    pickupreasonoutoftime integer DEFAULT 0 NOT NULL,
     creation_date timestamp without time zone DEFAULT (now())::timestamp without time zone NOT NULL,
     creation_user character varying(20) DEFAULT ''::character varying NOT NULL,
     last_update timestamp without time zone DEFAULT '0099-01-01 00:00:00'::timestamp without time zone NOT NULL,
@@ -264,6 +266,7 @@ ALTER TABLE integraciones.returns_customer OWNER TO postgres;
 --
 
 CREATE TABLE integraciones.returns_products (
+    reg_status character varying(1) DEFAULT ''::character varying NOT NULL,
     returnid integer DEFAULT 0 NOT NULL,
     referencenumber integer DEFAULT 0 NOT NULL,
     description character varying(100),
@@ -371,8 +374,8 @@ INSERT INTO integraciones.invoice_product (loadid, deliveryid, productcode, ean,
 -- Data for Name: planning; Type: TABLE DATA; Schema: integraciones; Owner: postgres
 --
 
-INSERT INTO integraciones.planning (reg_status, loadid, originlocationid, vehicletype, totalweightsum, totalvolumesum, totalpiecessum, totaldeliverycount, loadorderid, licenseplate, drivername, drivercc, creation_date, creation_user, last_update, user_update) VALUES ('1', 16820281, '2001671980', 'CO04', 27592.09, 71.21, 4376.00, 3.00, '1234567', NULL, NULL, NULL, '2021-10-26 13:59:09.031495', 'WSPROCTER', '2021-10-26 13:59:09.031495', 'WSPROCTER');
-INSERT INTO integraciones.planning (reg_status, loadid, originlocationid, vehicletype, totalweightsum, totalvolumesum, totalpiecessum, totaldeliverycount, loadorderid, licenseplate, drivername, drivercc, creation_date, creation_user, last_update, user_update) VALUES ('1', 16820286, '2001592704', 'CO02', 4677.51, 11.14, 532.00, 5.00, '2345678', NULL, NULL, NULL, '2021-10-26 13:59:09.031495', 'WSPROCTER', '2021-10-26 13:59:09.031495', 'WSPROCTER');
+INSERT INTO integraciones.planning (reg_status, loadid, originlocationid, vehicletype, totalweightsum, totalvolumesum, totalpiecessum, totaldeliverycount, loadorderid, licenseplate, drivername, drivercc, creation_date, creation_user, last_update, user_update) VALUES ('1', 16820281, '2001671980', 'CO04', 27592.09, 71.21, 4376.00, 3.00, null, NULL, NULL, NULL, '2021-10-26 13:59:09.031495', 'WSPROCTER', '2021-10-26 13:59:09.031495', 'WSPROCTER');
+INSERT INTO integraciones.planning (reg_status, loadid, originlocationid, vehicletype, totalweightsum, totalvolumesum, totalpiecessum, totaldeliverycount, loadorderid, licenseplate, drivername, drivercc, creation_date, creation_user, last_update, user_update) VALUES ('1', 16820286, '2001592704', 'CO02', 4677.51, 11.14, 532.00, 5.00, null, NULL, NULL, NULL, '2021-10-26 13:59:09.031495', 'WSPROCTER', '2021-10-26 13:59:09.031495', 'WSPROCTER');
 
 
 --

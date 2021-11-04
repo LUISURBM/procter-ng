@@ -1,172 +1,199 @@
 <div class="row" [formGroup]="group">
-	<div class="col-12 p-2 mb-auto " formArrayName="returns">
-		<div [id]="'toggle-'+return[p]?.loadid" class="card tab" *ngFor="let plan of returns.controls; let p = index">
-			<div class="card-header tab-label row p-2" (click)="return[p].inView = !return[p]?.inView!">
-				<div class="col align-middle">
-					# <b>{{return[p]?.returnid}}</b>
-					<label class="badge badge-warning">{{return[p]?.reg_status}}</label>
-				</div>
-				<div class="col-auto d-flex justify-content-end">
-					<button class="btn btn-sm btn-outline-primary ml-2"
-						[disabled]="!plan.touched === true || !(plan.valid === true && plan.pristine===false)"
-						(click)="save(return[p],p);">💾</button>
-					<button class="btn btn-sm btn-outline-primary ml-2">{{return[p]?.inView
-						? '🔼':'🔽' }}</button>
-				</div>
-			</div>
-			<div class="card-body"
-				[ngClass]="{'tab-content-visible collapse show': return[p]?.inView, 'tab-content': !return[p]?.inView}">
-				<ng-container [formGroupName]="p">
-					<h5 class="sub-title">Información de la recolección:</h5>
-					<div class="row mobile-inputs">
-						<div class="col-12 col-sm-6 col-md-4">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Estado devolución:</label>
-								</div>
-								<div class="input-group col">
-									<select class="custom-select form-control" formControlName="reg_status" #status (change)="status.blur()">
-										<option selected disabled value>-- SIN SELECCIÓN --</option>
-										<option selected blankoption *ngFor="let bundle of bundleSrv.returnReasons"
-											[value]="bundle.table_code">{{bundle.descripcion}}</option>
-									</select>
-									<div class="input-group-append">
-										<button type="button" class="btn btn-outline-secondary"
-											(click)="clear('reg_status', p)">🗑</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-md-4">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Motivo devolución:</label>
-								</div>
-								<div class="input-group col">
-									<select class="custom-select form-control" formControlName="pickupreason">
-										<option selected disabled value>-- SIN SELECCIÓN --</option>
-										<option selected blankoption
-											*ngFor="let bundle of bundleSrv.pickUpReasonsOutOfTime"
-											[value]="bundle.table_code">{{bundle.descripcion}}</option>
-									</select>
-									<div class="input-group-append">
-										<button type="button" class="btn btn-outline-secondary"
-											(click)="clear('pickupreason', p)">🗑</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-md-4">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Fecha devolución:</label>
-								</div>
-								<div class="input-group col">
-									<input class="form-control" placeholder="Fecha devolución" [min]="minDate"
-										[max]="maxDate" (change)="fechadevolucion()" type="datetime-local"
-										formControlName="pickupdate">
-									<div class="input-group-append">
-										<button type="button" class="btn btn-outline-secondary"
-											(click)="clear('pickupdate', p)">🗑</button>
-									</div>
-								</div>
-							</div>
-						</div>
+    <div class="col-12 p-2 mb-auto " formArrayName="returns">
+        <div [id]="'toggle-'+return[p]?.loadid" class="card tab" *ngFor="let plan of returns.controls; let p = index">
+            <div class="card-header tab-label row p-2" (click)="return[p].inView = !return[p]?.inView!">
+                <div class="col align-middle">
+                    # <b>{{return[p]?.returnid}}</b>
+                    <label class="badge badge-warning">{{return[p]?.reg_status}}</label>
+                </div>
+                <div class="col-auto d-flex justify-content-end">
+                    <button class="btn btn-sm btn-outline-primary ml-2"
+                        [disabled]="!plan.touched === true || !(plan.valid === true && plan.pristine===false)"
+                        (click)="save(return[p],p);">💾</button>
+                    <button class="btn btn-sm btn-outline-primary ml-2">{{return[p]?.inView
+                        ? '🔼':'🔽' }}</button>
+                </div>
+            </div>
+            <div class="card-body"
+                [ngClass]="{'tab-content-visible collapse show': return[p]?.inView, 'tab-content': !return[p]?.inView}">
+                <ng-container [formGroupName]="p">
+                    <h5 class="sub-title">Información de la recolección:</h5>
+                    <div class="row mobile-inputs">
 
-						<hr>
-					</div>
-					<h5 class="sub-title">Información del cliente:</h5>
-					<div class="row mobile-inputs" formGroupName="customer">
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Id. Planilla:</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input type="text" class="form-control form-control-info"
+                                        placeholder="Id. de planilla" disabled readonly formControlName="loadorderid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Estado devolución:</label>
+                                </div>
+                                <div class="input-group col">
+                                    <select class="custom-select form-control" formControlName="reg_status" #status
+                                        (change)="status.blur()">
+                                        <option selected disabled value>-- SIN SELECCIÓN --</option>
+                                        <option selected blankoption *ngFor="let bundle of bundleSrv.returnReasons"
+                                            [value]="bundle.table_code">{{bundle.descripcion}}</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            (click)="clear('reg_status', p)">🗑</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Motivo devolución:</label>
+                                </div>
+                                <div class="input-group col">
+                                    <select class="custom-select form-control" formControlName="pickupreason">
+                                        <option selected disabled value>-- SIN SELECCIÓN --</option>
+                                        <option selected blankoption
+                                            *ngFor="let bundle of bundleSrv.pickUpReasonsOutOfTime"
+                                            [value]="bundle.table_code">{{bundle.descripcion}}</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            (click)="clear('pickupreason', p)">🗑</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Fecha real devolución:</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input class="form-control" placeholder="Fecha devolución" [min]="minDate"
+                                        [max]="maxDate" (change)="fechadevolucion()" type="datetime-local"
+                                        formControlName="pickupdate">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            (click)="clear('pickupdate', p)">🗑</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-						<div class="col-12 col-sm-6">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Identificación del cliente:</label>
-								</div>
-								<div class="input-group col">
-									<input type="text" class="form-control form-control-info"
-										placeholder="Identificador del cliente" disabled readonly formControlName="customerid">
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Nombre del cliente :</label>
-								</div>
-								<div class="input-group col">
-									<input type="text" class="form-control form-control-info"
-										placeholder="Nombre del cliente " disabled readonly formControlName="nombre">
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Teléfono del cliente :</label>
-								</div>
-								<div class="input-group col">
-									<input type="text" class="form-control form-control-info"
-										placeholder="Teléfono del cliente " disabled readonly formControlName="phonenumber">
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Dirección del cliente :</label>
-								</div>
-								<div class="input-group col">
-									<input type="text" class="form-control form-control-info"
-										placeholder="Dirección del cliente " disabled readonly formControlName="address">
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6">
-							<div class="form-group">
-								<div class="col">
-									<label class="col-form-label">Nombre del contacto :</label>
-								</div>
-								<div class="input-group col">
-									<input type="text" class="form-control form-control-info"
-										placeholder="Nombre del contacto " disabled readonly formControlName="contactname">
-								</div>
-							</div>
-						</div>
-					</div>
-				</ng-container>
-				<h5 class="card-title"> Detalle de los productos: </h5>
-				<div class="card-block table-border-style">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Revisado</th>
-									<th># Refencia</th>
-									<th>Unidad</th>
-									<th>Cantidad</th>
-									<th>Descripción</th>
-								</tr>
-							</thead>
-							<tbody *ngFor="let product of return[p]?.customer?.product; let i = index">
-								<tr (click)="product.inView = product?.inView ? 0 : 1; ">
+                        <hr>
+                    </div>
+                    <h5 class="sub-title">Información del cliente:</h5>
+                    <div class="row mobile-inputs" formGroupName="customer">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Identificación del cliente:</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input type="text" class="form-control form-control-info"
+                                        placeholder="Identificador del cliente" disabled readonly
+                                        formControlName="customerid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Nombre del cliente :</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input type="text" class="form-control form-control-info"
+                                        placeholder="Nombre del cliente " disabled readonly formControlName="nombre">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Teléfono del cliente :</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input type="text" class="form-control form-control-info"
+                                        placeholder="Teléfono del cliente " disabled readonly
+                                        formControlName="phonenumber">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Dirección del cliente :</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input type="text" class="form-control form-control-info"
+                                        placeholder="Dirección del cliente " disabled readonly
+                                        formControlName="address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Nombre del contacto :</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input type="text" class="form-control form-control-info"
+                                        placeholder="Nombre del contacto " disabled readonly
+                                        formControlName="contactname">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="col-form-label">Fecha no devolución:</label>
+                                </div>
+                                <div class="input-group col">
+                                    <input class="form-control" placeholder="Fecha devolución" type="datetime-local"
+                                        disabled readonly formControlName="pickupreasonoutoftime">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <h5 class="card-title"> Detalle de los productos: </h5>
+                <div class="card-block table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Revisado</th>
+                                    <th># Refencia</th>
+                                    <th>Unidad</th>
+                                    <th>Cantidad</th>
+                                    <th>Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let product of return[p]?.customer?.product; let i = index">
+                                <tr (click)="product.inView = product?.inView ? 0 : 1; ">
 
-									<td>{{i+1}}</td>
-									<td>{{product.reviewcontent ? 'Sí' : 'No'}}</td>
-									<td> {{product.referencenumber}}</td>
-									<td style="width: 20%">{{product?.salesunit}}</td>
-									<td style="width: 20%">{{product.quantity}}</td>
-									<td class="text-wrap">{{product.description}}</td>
-								</tr>
-							</tbody>
+                                    <td>{{i+1}}</td>
+                                    <td>{{product.reviewcontent ? 'Sí' : 'No'}}</td>
+                                    <td> {{product.referencenumber}}</td>
+                                    <td style="width: 20%">{{product?.salesunit}}</td>
+                                    <td style="width: 20%">{{product.quantity}}</td>
+                                    <td class="text-wrap">{{product.description}}</td>
+                                </tr>
+                            </tbody>
 
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</div>
-	<p class="text-muted m-t-1 font-12">Total <b>devoluciones</b> {{return?.length}}</p>
+    </div>
+    <p class="text-muted m-t-1 font-12">Total <b>devoluciones</b> {{return?.length}}</p>
 </div>

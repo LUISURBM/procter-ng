@@ -78,6 +78,7 @@ export class ReturnsComponent implements OnInit {
 		return {
 			pickupreason: this.builder.control(p.pickupreason, [Validators.required]),
 			returnid: this.builder.control(p.returnid, [Validators.required]),
+			loadorderid: this.builder.control(p.loadorderid, [Validators.required]),
 			reg_status: this.builder.control(p.reg_status, [Validators.required]),
 			customer: this.builder.group({
 				customerid: this.builder.control(p.customer[0].customerid),
@@ -87,6 +88,7 @@ export class ReturnsComponent implements OnInit {
 				contactname: this.builder.control(p.customer[0].contactname),
 			}),
 			pickupdate: new FormControl(formatDate(p.pickupdate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
+			pickupreasonoutoftime: new FormControl(formatDate(p.pickupdate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 		}
 	}
 	get returns() {
