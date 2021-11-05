@@ -110,27 +110,22 @@ export class RejectComponent implements OnInit {
 	disabled = false;
 
 	selectedLoadOrderId() {
-		debugger
 		const selectedorder = this.planillas.filter(p => p.loadorderid == `${this.group.value.loadorderid}`);
 		return selectedorder && selectedorder.length > 0 ? selectedorder[0] : undefined;
 	}
 	selectedLoadOrderIdbydeliveryid() {
-		debugger
 		const selectedorder = this.planillas.filter(p => p.delivery.filter(d => d.deliveryid === this.selecteddeliveryId().deliveryid).length > 0);
 		return selectedorder && selectedorder.length > 0 ? selectedorder[0] : undefined;
 	}
 	selectedLoadOrderIdbyinvoiceid() {
-		debugger
 		const selectedorder = this.planillas.filter(p => p.delivery.filter(d => d.invoice.filter(i => i.invoiceid === this.selectedinvoiceId().invoiceid)).length > 0);
 		return selectedorder && selectedorder.length > 0 ? selectedorder[0] : undefined;
 	}
 	selectedDeliveryIdbyinvoiceid() {
-		debugger
 		const selectedorder = this.planillas.length == 0 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery), []).filter(d => d.invoice.filter(i => i.invoiceid === this.selectedinvoiceId().invoiceid).length > 0);
 		return selectedorder && selectedorder.length > 0 ? selectedorder[0] : undefined;
 	}
 	selectedLoadOrderIdbyproductid() {
-		debugger
 		const selectedorder = this.planillas.length == 0 ? this.planillas : this.planillas.reduce((s, p) => s.concat(
 			p.delivery.reduce((t, d) => t.concat(
 				d.invoice.reduce((u, i) => u.concat(
@@ -149,37 +144,31 @@ export class RejectComponent implements OnInit {
 		return selectedorder && selectedorder.length > 0 ? selectedorder[0] : undefined;
 	}
 	selectedDeliveryIdbyproductid() {
-		debugger
 		const selectedorder = this.planillas.length == 0 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery), []).filter(d => d.invoice.reduce((t, q) => t.concat(q.product), []).filter(p => p.productid === this.selectedproductId().productid).length > 0);
 		return selectedorder && selectedorder.length > 0 ? selectedorder[0] : undefined;
 	}
 	selectedLoadId() {
-		debugger
 		// TO-DO: 1-1 loadid-loadorderid ?
 		const selectedLoad = this.planillas.filter(p => p.loadid == `${this.group.value.loadid}`);
 		return selectedLoad && selectedLoad.length > 0 ? selectedLoad[0] : undefined;
 	}
 	selecteddeliveryId() {
-		debugger
 		// TO-DO: 1-1 loadid-loadorderid ?
 		const selecteddelivery = this.planillas.length == 0 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery.filter(d => d.deliveryid == `${this.group.value.deliveryid}`)), []);
 		return selecteddelivery && selecteddelivery.length > 0 ? selecteddelivery[0] : undefined;
 	}
 	selectedinvoiceId() {
-		debugger
 		// TO-DO: 1-1 loadid-loadorderid ?
 		const selectedinvoice = this.planillas.length == 0 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery.reduce((t, q) => t.concat(q.invoice.filter(d => d.invoiceid == `${this.group.value.invoiceid}`)), [])), []);
 		return selectedinvoice && selectedinvoice.length > 0 ? selectedinvoice[0] : undefined;
 	}
 	selectedproductId() {
-		debugger
 		// TO-DO: 1-1 loadid-loadorderid ?
 		const selectedproduct = this.planillas.length == 0 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery.reduce((t, q) => t.concat(q.invoice.reduce((u, r) => u.concat(r.product.filter(pr => pr.productcode == `${this.group.value.referencenumber}`)), [])), [])), []);
 		return selectedproduct && selectedproduct.length > 0 ? selectedproduct[0] : undefined;
 	}
 
 	loadorderid() {
-		debugger
 		if (!this.selectedLoadOrderId()) {
 			this.group.reset();
 		} else {
@@ -187,7 +176,6 @@ export class RejectComponent implements OnInit {
 		}
 	}
 	loadid() {
-		debugger
 		if (!this.selectedLoadId()) {
 			this.group.patchValue({ loadid: undefined });
 		} else {
@@ -195,7 +183,6 @@ export class RejectComponent implements OnInit {
 		}
 	}
 	deliveryid() {
-		debugger
 		if (!this.selecteddeliveryId()) {
 			this.group.patchValue({ deliveryid: undefined });
 		} else {
@@ -203,7 +190,6 @@ export class RejectComponent implements OnInit {
 		}
 	}
 	invoiceid() {
-		debugger
 		if (!this.selectedinvoiceId()) {
 			this.group.patchValue({ invoiceid: undefined, referencenumber: undefined });
 		} else if (!this.group.value.loadorderid) {
@@ -213,7 +199,6 @@ export class RejectComponent implements OnInit {
 		}
 	}
 	productid() {
-		debugger
 		if (!this.selectedproductId()) {
 			this.group.patchValue({ referencenumber: undefined });
 		} else if (!this.group.value.loadorderid) {
@@ -222,25 +207,20 @@ export class RejectComponent implements OnInit {
 	}
 
 	get planningdatabyloadid() {
-		debugger
 		return this.selectedLoadOrderId() ? [this.selectedLoadOrderId().loadid] : this.planillas.map(p => p.loadid);
 	}
 	get deliverdatabyloadid() {
-		debugger
 		return this.selectedLoadOrderId() ? this.selectedLoadOrderId().delivery : this.planillas.length < 1 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery), []);
 	}
 	//TO-DO: validar unique invoice in delivery
 	get invoicedatabydeliveryid() {
-		debugger
 		return this.selecteddeliveryId() ? this.selecteddeliveryId().invoice : this.planillas.length < 1 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery.reduce((t, q) => t.concat(q.invoice), [])), []);
 	}
 	get refnumberdatabyinvoiceid() {
-		debugger
 		return this.selectedinvoiceId() ? this.selectedinvoiceId().product : this.planillas.length < 1 ? this.planillas : this.planillas.reduce((s, p) => s.concat(p.delivery.reduce((t, q) => t.concat(q.invoice.reduce((u, r) => u.concat(r.product), [])), [])), []);
 	}
 
 	clear(control) {
-		debugger
 		this.rejection.reset();
 		this.group.controls[control].reset();
 		switch (control) {
@@ -261,7 +241,6 @@ export class RejectComponent implements OnInit {
 	}
 
 	rejectdate() {
-		debugger
 		if (this.group.value.rejectdate && new Date(this.group.value.rejectdate) > new Date())
 			this.group.patchValue({ rejectdate: undefined });
 

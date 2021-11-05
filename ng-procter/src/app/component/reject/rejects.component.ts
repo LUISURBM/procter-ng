@@ -35,7 +35,7 @@ export class RejectsComponent implements OnInit, OnDestroy {
 		this.minDate.setDate(this.minDate.getDate() - 30);
 		this.subscriptions = [];
 		this.group = builder.group({
-			fechainicio: new FormControl(formatDate(this.maxDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
+			fechainicio: new FormControl(formatDate(this.minDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 			fechafin: new FormControl(formatDate(this.maxDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 		})
 		this.minDate.setFullYear(new Date().getFullYear() - 1);
