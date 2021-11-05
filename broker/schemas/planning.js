@@ -35,7 +35,6 @@ NEWSCHEMA('Planning', function (schema) {
 	schema.setInsert(function ($, model) {
 
 		// Assigns additional values
-		model.loadid = UID();
 		model.last_update = new Date();
 		model.user_update = 'PROCTER';
 

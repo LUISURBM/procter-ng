@@ -38,7 +38,6 @@ export class RejectsComponent implements OnInit, OnDestroy {
 			fechainicio: new FormControl(formatDate(this.minDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 			fechafin: new FormControl(formatDate(this.maxDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 		})
-		this.minDate.setFullYear(new Date().getFullYear() - 1);
 		this.buscar();
 	}
 

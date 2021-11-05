@@ -24,6 +24,8 @@ NEWSCHEMA('Rejects', function (schema) {
 	schema.setInsert(function ($, model) {
 
 		// Assigns additional values
+		model.creation_date = new Date();
+		model.creation_user = 'PROCTER';
 		model.last_update = new Date();
 		model.user_update = 'PROCTER';
 		console.log('insert reject')
