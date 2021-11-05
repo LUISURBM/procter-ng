@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
 
 	login(event: any) {
 		if (event.keyCode == 13)
-			this.authSrv.login(event.target.value);
+			this.init(event.target.value);
+	}
+
+	init(nombre:string){
+		this.authSrv.login(nombre);
 	}
 }

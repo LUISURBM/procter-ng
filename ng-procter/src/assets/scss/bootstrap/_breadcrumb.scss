@@ -39,3 +39,72 @@
     color: $breadcrumb-active-color;
   }
 }
+.breadcrumb--container{
+}
+
+.breadcrumb--action{
+  transition: 0.3s transform ease-in-out, 0.3s opacity ease-in-out;;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  left: 27%;
+  top: 20px;
+  opacity: 1;
+  max-height: 38px;
+}
+.menu{
+  grid-column-start: col-start 2;
+  background-color: #F0F8FF;
+  width: 100%;
+  border-radius: 0 0 25px 25px;
+  transition: 0.3s border-radius ease-in-out, 0.3s height ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.menu--closed{
+  height: 0px;
+}
+
+.menu--open{
+  height: 400px;
+}
+
+.menu--open .a{
+  transform-origin: center;
+  transform: rotate(90deg);
+}
+
+.tools{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  height: 60%;
+  justify-content: space-between;
+  transition: 0.3s margin ease-in-out;
+  overflow: hidden;
+}
+
+
+.tools .icon{
+  transition: 0.2s transform ease-in-out;
+}
+
+.tools .icon:hover{
+  transform: scale(0.8);
+}
+
+.tools--hidden{
+  display: none;
+  z-index: -100;
+}
+
+.tools--visible{
+  margin-top: 10%;
+  z-index: 100;
+}

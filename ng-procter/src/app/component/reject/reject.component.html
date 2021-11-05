@@ -1,6 +1,5 @@
 <div class="row">
 	<div class="col">
-		<h5 class="card-title">Nuevo Rechazo</h5>
 		<h6 class="card-subtitle">Escriba la información del rechazo</h6>
 		<div class="card">
 			<div class="card-body">
@@ -12,8 +11,8 @@
 							<div class="col-12 col-sm-4">
 								<label class="col-form-label">Id. Factura:</label>
 								<div class="input-group ">
-									<input type="text" class="form-control form-control-info" placeholder="# Factura"
-										list="invoicedatabydeliveryid" list="invoicedatabydeliveryid"
+									<input type="text" class="form-control form-control-info" placeholder="# Factura" id="invoiceid"
+										list="invoicedatabydeliveryid" 
 										(change)="invoiceid()" autocomplete="off" size="10" formControlName="invoiceid">
 									<div class="input-group-append">
 										<button type="button" class="btn btn-outline-secondary"
@@ -24,7 +23,7 @@
 							<div class="col-12 col-sm-4">
 								<label class="col-form-label">Número de Referencia:</label>
 								<div class="input-group ">
-									<input type="text" class="form-control" list="refnumberdatabyinvoiceid"
+									<input type="text" class="form-control" id="referencenumber"
 										list="refnumberdatabyinvoiceid" (change)="productid()" autocomplete="off"
 										size="10" placeholder="# de Referencia" formControlName="referencenumber">
 									<div class="input-group-append">
@@ -49,7 +48,7 @@
 							<div class="col-12 col-sm-4 col-lg-auto">
 								<label class="col-form-label">Id. Carga:</label>
 								<div class="input-group ">
-									<input type="text" class="form-control form-control-default"
+									<input type="text" class="form-control form-control-default" id="loadid"
 										list="planningdatabyloadid" placeholder="# de la carga" (change)="loadid()"
 										autocomplete="off" size="10" formControlName="loadid">
 									<div class="input-group-append">
@@ -61,7 +60,7 @@
 							<div class="col-12 col-sm-4 col-lg-auto">
 								<label class="col-form-label">Id. Envío:</label>
 								<div class="input-group ">
-									<input type="text" class="form-control" placeholder="# Envío"
+									<input type="text" class="form-control" placeholder="# Envío" id="deliveryid"
 										list="deliverdatabyloadid" (change)="deliveryid()" autocomplete="off" size="10"
 										formControlName="deliveryid">
 									<div class="input-group-append">
@@ -154,15 +153,14 @@
 </datalist>
 
 <datalist id="planningdatabyloadid">
-	<option *ngFor="let p of planningdatabyloadid()" [value]="p">{{p}}</option>
+	<option *ngFor="let p of planningdatabyloadid" [value]="p">{{p}}</option>
 </datalist>
 <datalist id="deliverdatabyloadid">
-	<option *ngFor="let p of deliverdatabyloadid()" [value]="p.deliveryid">{{p.deliveryid}}</option>
+	<option *ngFor="let p of deliverdatabyloadid" [value]="p.deliveryid">{{p.deliveryid}}</option>
 </datalist>
 <datalist id="invoicedatabydeliveryid">
-	<option *ngFor="let p of invoicedatabydeliveryid()" [value]="p.invoiceid">{{p.invoiceid}}</option>
+	<option *ngFor="let p of invoicedatabydeliveryid" [value]="p.invoiceid">{{p.invoiceid}}</option>
 </datalist>
 <datalist id="refnumberdatabyinvoiceid">
-	<option *ngFor="let p of refnumberdatabyinvoiceid()" [value]="p.productcode">{{p.productcode}}</option>
+	<option *ngFor="let p of refnumberdatabyinvoiceid" [value]="p.productcode">{{p.productcode}}</option>
 </datalist>
-<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

@@ -1,9 +1,16 @@
+NEWSCHEMA('Return/Product', function(schema) {
+	schema.define('reg_selected', 'String(1)', true);
+	schema.define('returnid', Number, true);
+});
+
 NEWSCHEMA('Return', function (schema) {
 
 	schema.define('returnid', Number);
 	schema.define('reg_status', 'String(1)', true);
 	schema.define('pickupdate', 'Date', true);
+	schema.define('loadorderid', 'String(20)', true);
 	schema.define('pickupreason', Number, true);
+	schema.define('product', '[Return/Product]', true);
 
 	schema.setQuery(async function ($) {
 
@@ -28,6 +35,7 @@ NEWSCHEMA('Return', function (schema) {
 		console.log(model)
 		// Performs query
 		DBMS().debug().insert('integraciones.returns', model).log($, model).callback($.done(model.returnid));
+		DBMS().debug().insert('integraciones.returns', model).log($, model).callback($.done(model.returnid));
 
 	});
 
@@ -39,8 +47,17 @@ NEWSCHEMA('Return', function (schema) {
 		// Performs query
 		// 404 error will be returned if the no records won't be updated
 		console.log(model);
-		DBMS().modify('integraciones.returns', model).where('returnid', model.returnid).log($, model).error(404).callback($.done($.returnid));
+		const products = model.product;
+		model.product = undefined;
+		console.log(model);
+		var db = DBMS();
 
+		db.modify('integraciones.returns', model).where('returnid', model.returnid).log($, model).error(404);
+		console.log(products)
+		products.forEach(producto => {
+			db.debug().modify('integraciones.returns_products', producto).where('returnid', model.returnid).log($, model).error(404);
+		});
+		db.callback($.done(model.returnid));
 	});
 
 });

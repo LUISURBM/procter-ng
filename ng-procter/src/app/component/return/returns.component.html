@@ -89,66 +89,8 @@
                         <hr>
                     </div>
                     <h5 class="sub-title">Información del cliente:</h5>
-                    <div class="row mobile-inputs" formGroupName="customer">
-                        <div class="col-12 col-sm-4">
-                            <div class="form-group">
-                                <div class="col">
-                                    <label class="col-form-label">Identificación del cliente:</label>
-                                </div>
-                                <div class="input-group col">
-                                    <input type="text" class="form-control form-control-info"
-                                        placeholder="Identificador del cliente" disabled readonly
-                                        formControlName="customerid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="form-group">
-                                <div class="col">
-                                    <label class="col-form-label">Nombre del cliente :</label>
-                                </div>
-                                <div class="input-group col">
-                                    <input type="text" class="form-control form-control-info"
-                                        placeholder="Nombre del cliente " disabled readonly formControlName="nombre">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="form-group">
-                                <div class="col">
-                                    <label class="col-form-label">Teléfono del cliente :</label>
-                                </div>
-                                <div class="input-group col">
-                                    <input type="text" class="form-control form-control-info"
-                                        placeholder="Teléfono del cliente " disabled readonly
-                                        formControlName="phonenumber">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="form-group">
-                                <div class="col">
-                                    <label class="col-form-label">Dirección del cliente :</label>
-                                </div>
-                                <div class="input-group col">
-                                    <input type="text" class="form-control form-control-info"
-                                        placeholder="Dirección del cliente " disabled readonly
-                                        formControlName="address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="form-group">
-                                <div class="col">
-                                    <label class="col-form-label">Nombre del contacto :</label>
-                                </div>
-                                <div class="input-group col">
-                                    <input type="text" class="form-control form-control-info"
-                                        placeholder="Nombre del contacto " disabled readonly
-                                        formControlName="contactname">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row mobile-inputs">
+
                         <div class="col-12 col-sm-4">
                             <div class="form-group">
                                 <div class="col">
@@ -160,6 +102,68 @@
                                 </div>
                             </div>
                         </div>
+                        <ng-container formGroupName="customer">
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                    <div class="col">
+                                        <label class="col-form-label">Identificación del cliente:</label>
+                                    </div>
+                                    <div class="input-group col">
+                                        <input type="text" class="form-control form-control-info"
+                                            placeholder="Identificador del cliente" disabled readonly
+                                            formControlName="customerid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                    <div class="col">
+                                        <label class="col-form-label">Nombre del cliente :</label>
+                                    </div>
+                                    <div class="input-group col">
+                                        <input type="text" class="form-control form-control-info"
+                                            placeholder="Nombre del cliente " disabled readonly
+                                            formControlName="nombre">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                    <div class="col">
+                                        <label class="col-form-label">Teléfono del cliente :</label>
+                                    </div>
+                                    <div class="input-group col">
+                                        <input type="text" class="form-control form-control-info"
+                                            placeholder="Teléfono del cliente " disabled readonly
+                                            formControlName="phonenumber">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                    <div class="col">
+                                        <label class="col-form-label">Dirección del cliente :</label>
+                                    </div>
+                                    <div class="input-group col">
+                                        <input type="text" class="form-control form-control-info"
+                                            placeholder="Dirección del cliente " disabled readonly
+                                            formControlName="address">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                    <div class="col">
+                                        <label class="col-form-label">Nombre del contacto :</label>
+                                    </div>
+                                    <div class="input-group col">
+                                        <input type="text" class="form-control form-control-info"
+                                            placeholder="Nombre del contacto " disabled readonly
+                                            formControlName="contactname">
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
                     </div>
                 </ng-container>
                 <h5 class="card-title"> Detalle de los productos: </h5>
@@ -180,9 +184,9 @@
                             <tbody *ngFor="let product of return[p]?.customer?.product; let i = index">
                                 <tr (click)="product.inView = product?.inView ? 0 : 1; ">
 
-                                    <td><button class="btn btn-sm btn-outline-primary ml-2">{{product?.reg_selected ===
-                                            'N'
-                                            ? '':'✔' }}</button></td>
+                                    <td><button class="btn btn-sm btn-outline-primary ml-2" (click)="product?.reg_selected === 'N' ? (product.reg_selected = 'S') : (product.reg_selected = 'N')">{{product?.reg_selected ===
+                                            'S'
+                                            ? '✅':'❌' }}</button></td>
                                     <td>{{i+1}}</td>
                                     <td>{{product.reviewcontent ? 'Sí' : 'No'}}</td>
                                     <td> {{product.referencenumber}}</td>

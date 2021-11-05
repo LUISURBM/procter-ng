@@ -29,17 +29,23 @@ export const ComponentsRoutes: Routes = [
 
 	{
 		path: 'rejects',
-		component: RejectsComponent,
-		data: {
-			title: 'Rechazos'
-		}
-	},
-	{
-		path: 'reject',
-		component: RejectComponent,
-		data: {
-			title: 'Rechazo'
-		},
+		children: [
+			{
+				path: '',
+				component: RejectsComponent,
+				data: {
+					title: 'Rechazos'
+				},
+				pathMatch: 'full'
+			},
+			{
+				path: 'reject',
+				component: RejectComponent,
+				data: {
+					title: 'Nuevo Rechazo'
+				},
+			},
+		]
 	}, {
 		path: 'return',
 		component: DevolucionComponent,

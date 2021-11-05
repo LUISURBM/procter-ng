@@ -98,7 +98,7 @@ export class ReturnsComponent implements OnInit {
 
 
 	save(devolucion, i) {
-		this.http.put(environment.procter_api + 'api/return/' + devolucion.returnid, { ...devolucion, ...this.group.value.returns[i], product: undefined }).subscribe({
+		this.http.put(environment.procter_api + 'api/return/' + devolucion.returnid, { ...devolucion, ...this.group.value.returns[i], product: devolucion.customer.product }).subscribe({
 			next: (resp: any) => {
 				if (resp.success)
 					this.toastService.show('Guardado OK!', { classname: 'bg-success text-light', delay: 15000 });

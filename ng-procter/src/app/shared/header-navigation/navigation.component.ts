@@ -3,7 +3,7 @@ declare var $: any;
 
 @Component({
   selector: 'app-navigation',
-  templateUrl: './navigation.component.html'
+  templateUrl: './navigation.component.html',
 })
 export class NavigationComponent {
   @Output()

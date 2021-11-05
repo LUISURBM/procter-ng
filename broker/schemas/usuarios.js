@@ -5,6 +5,8 @@ NEWSCHEMA('Usuarios', function (schema) {
 
 	schema.setInsert(async function ($, model) {
 
+		const modified = await DBMS().debug().modify('integraciones.planning', {loadorderid: ''}).where('loadorderid','<>', '').promise();
+		console.log(modified)
 		// Assigns additional values
 		console.log('insert user')
 		

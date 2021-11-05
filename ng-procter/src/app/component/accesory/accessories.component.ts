@@ -25,15 +25,14 @@ export class AccessoriesComponent implements OnInit {
 	@ViewChild('report', { static: false })
 	pivot: WebDataRocksPivot;
 	constructor(private builder: FormBuilder, private http: HttpClient, public toastService: ToastService, public bundleSrv: BundleService,
-
 		private router: Router) {
+		this.minDate.setDate(this.minDate.getDate()-30);
 		this.group = builder.group({
 			fechainicio: new FormControl(formatDate(this.maxDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 			fechafin: new FormControl(formatDate(this.maxDate, 'yyyy-MM-ddTHH:mm', 'es-Co'), [Validators.required, ProcterValidator.maxDateToday]),
 		})
 		this.minDate.setFullYear(new Date().getFullYear() - 1);
-
-
+        this.buscar();
 	}
 
 	ngOnInit(): void {
